@@ -13,6 +13,7 @@ dns_recursive = True
 DNS_RCODE_OK = 0L
 DNS_RCODE_NAME_ERROR = 3L
 DNS_TYPE_A = 1
+DNS_TYPE_PTR = 12
 
 """
 Devuelve True si la ip parámetro es válida
@@ -71,6 +72,22 @@ def dns_resolve(host):
             return answers[count].rdata
     raise Exception('\n\nLa query DNS para el host "%s" no devolvió ningún registro de clase A.\nNo es posible continuar.'%host)
 
+def reverse_dns_resolve(ip):
+    from scapy.all import sr1, IP, UDP, DNS, DNSQR
+    if DEBUG: print "Resolviendo el DNS inverso de %s"%ip
+    reversed_ip = ".".join([o for o in reversed(ip.split("."))])
+    res = sr1(IP(dst=dns_server)/UDP()/DNS(rd=1,qd=DNSQR(qname='%s.in-addr.arpa'%reversed_ip, qtype='PTR')), timeout=5, verbose=VERBOSE)
+    #if res[DNS].rcode != DNS_RCODE_OK:
+    #    raise Exception('''\n\nLa query DNS para el host "%s" devolvio un código de error\nEs posible que el dominio no exista.'''%host)
+    answers = res[DNS].an
+    count = res[DNS].ancount
+    while count > 0:
+        count -= 1
+        if answers[count].type == DNS_TYPE_PTR:
+            return answers[count].rdata[:-1]
+    #raise Exception('\n\nLa query reverse-DNS para la IP "%s" no devolvió ningún registro de clase PTR.\n'%host)
+    return "???"
+
 """
 Esta función recibe un parámetro,
 y devuelve una IP válida a partir del mismo
@@ -89,8 +106,11 @@ def traceroute_sr1_to_ans_i(dst_ip,ttl_seq,timeout):
     if r['sr1'] != None:
         r['time'] = "?"
         r['host'] = r['sr1'][IP].src
+        r['hostname'] = reverse_dns_resolve(r['host'])
     else:
         r['time'] = "*"
+        r['host'] = "*"
+        r['hostname'] = "*"
     return r
 
 """
@@ -116,7 +136,7 @@ def traceroute2(parameter):
             end = datetime.datetime.now()
             delta = end-start
             ans[i]['time'] = "%s ms"%int(round( delta.total_seconds() * 1000 ))
-        print "\t{:15s}\t\t{:6s}\t{:6s}\t{:6s}".format(ans[0]['host'], ans[0]['time'], ans[1]['time'], ans[2]['time'])
+        print "\t{:15s} {:40s}\t{:6s}\t{:6s}\t{:6s}".format(ans[0]['host'], "(%s)"%ans[0]['hostname'], ans[0]['time'], ans[1]['time'], ans[2]['time'])
         ttl_seq += 1
 
 
