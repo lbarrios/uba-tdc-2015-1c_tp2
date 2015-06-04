@@ -99,18 +99,31 @@ def get_ip_from_parameter(host):
     return dst_ip     
 
 def traceroute_sr1_to_ans_i(dst_ip,ttl_seq,timeout):
-    from scapy.all import sr1, ICMP, TCP, IP, RandShort
+    from scapy.all import sr, sr1, ICMP, TCP, IP, RandShort
+    import datetime
     r = {}
     #r['sr1'] = sr1(IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / TCP(flags=0x2), timeout=2, retry=0, verbose=VERBOSE)
-    r['sr1'] = sr1(IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / ICMP(), timeout=2, retry=0, verbose=VERBOSE)
-    if r['sr1'] != None:
-        r['time'] = "?"
-        r['host'] = r['sr1'][IP].src
+    packet = IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / ICMP()
+    start = datetime.datetime.now()
+    r['ans'],r['unans'] = sr(packet, timeout=2, retry=0, verbose=VERBOSE)
+    end = datetime.datetime.now()
+    # python time
+    #r['start_time'] = start
+    #r['end_time'] = end
+    #r['delta_time'] = end-start
+    #r['time'] = "%s ms"%int(round( r['delta_time'].total_seconds() * 1000 ))
+    if r['ans'] != None and len(r['ans']) >= 1 and len(r['ans'][0]) >= 2:
+        r['host'] = r['ans'][0][1][IP].src
         r['hostname'] = reverse_dns_resolve(r['host'])
+        # packet time
+        r['p_start_time'] = r['ans'][0][0].time
+        r['p_end_time'] = r['ans'][0][1].time
+        r['p_delta_time'] = r['p_end_time']-r['p_start_time']
+        r['time'] = "%s ms"%int(round( r['p_delta_time'] * 1000 ))
     else:
-        r['time'] = "*"
         r['host'] = "*"
         r['hostname'] = "*"
+        r['time'] = "*"
     return r
 
 """
@@ -121,7 +134,6 @@ dirección IP correspondiente
 (explicar diferencia con traceroute)
 """
 def traceroute2(parameter):
-    import datetime
     dst_ip = get_ip_from_parameter(parameter)
     rcv,snd,ttl_seq = None,None,1
     print "traceroute to %s (%s), hops max %s"%(url,dst_ip,hops_max)
@@ -130,12 +142,8 @@ def traceroute2(parameter):
         ans = {}
         host = "?"
         for i in range(0,3):
-            start = datetime.datetime.now()
             ans[i] = rcv = traceroute_sr1_to_ans_i(dst_ip, ttl_seq, 2)
             host = ans[i]['host']
-            end = datetime.datetime.now()
-            delta = end-start
-            ans[i]['time'] = "%s ms"%int(round( delta.total_seconds() * 1000 ))
         print "\t{:15s} {:40s}\t{:6s}\t{:6s}\t{:6s}".format(ans[0]['host'], "(%s)"%ans[0]['hostname'], ans[0]['time'], ans[1]['time'], ans[2]['time'])
         ttl_seq += 1
 
