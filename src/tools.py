@@ -5,7 +5,7 @@
 DEBUG = False
 #DEBUG = True
 VERBOSE = False
-hops_max = 10
+hops_max = 20
 dns_server = "8.8.8.8"
 dns_recursive = True
 
@@ -81,6 +81,17 @@ def get_ip_from_parameter(host):
     if not is_valid_ipv4_address(dst_ip): raise Exception("\n\nLa IP %s correspondiente al parametro %s no parece ser válida."%(dst_ip,host))
     return dst_ip     
 
+def traceroute_sr1_to_ans_i(dst_ip,ttl_seq,timeout):
+    from scapy.all import sr1, ICMP, TCP, IP, RandShort
+    r = {}
+    #r['sr1'] = sr1(IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / TCP(flags=0x2), timeout=2, retry=0, verbose=VERBOSE)
+    r['sr1'] = sr1(IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / ICMP(), timeout=2, retry=0, verbose=VERBOSE)
+    if r['sr1'] != None:
+        r['time'] = "?"
+        r['host'] = r['sr1'][IP].src
+    else:
+        r['time'] = "*"
+    return r
 
 """
 Esta funcion recibe un hostname
@@ -90,27 +101,22 @@ dirección IP correspondiente
 (explicar diferencia con traceroute)
 """
 def traceroute2(parameter):
-    from scapy.all import sr1, IP, TCP, RandShort
+    import datetime
     dst_ip = get_ip_from_parameter(parameter)
     rcv,snd,ttl_seq = None,None,1
     print "traceroute to %s (%s), hops max %s"%(url,dst_ip,hops_max)
-    while (not rcv or rcv.src!=dst_ip) and ttl_seq<=hops_max:
-        print ttl_seq,
-        #for snd,rcv in ans:
-        #    print "#%d\t %s"%(snd.ttl,rcv.src)
-        #    if DEBUG: print rcv.show()
+    while (not rcv or host!=dst_ip) and ttl_seq<=hops_max:
+        print "  %s"%ttl_seq,
         ans = {}
         host = "?"
         for i in range(0,3):
-            ans[i] = {}
-            ans[i]['sr1'] = sr1(IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / TCP(flags=0x2), timeout=2, retry=0, verbose=VERBOSE)
-            if ans[i]['sr1'] != None:
-                rcv = ans[i]['sr1']
-                ans[i]['time'] = "?"
-                host = rcv.src
-            else:
-                ans[i]['time'] = "*"
-        print "%s %s %s %s"%(host, ans[0]['time'], ans[1]['time'], ans[2]['time'])
+            start = datetime.datetime.now()
+            ans[i] = rcv = traceroute_sr1_to_ans_i(dst_ip, ttl_seq, 2)
+            host = ans[i]['host']
+            end = datetime.datetime.now()
+            delta = end-start
+            ans[i]['time'] = "%s ms"%int(round( delta.total_seconds() * 1000 ))
+        print "\t{:15s}\t\t{:6s}\t{:6s}\t{:6s}".format(ans[0]['host'], ans[0]['time'], ans[1]['time'], ans[2]['time'])
         ttl_seq += 1
 
 
