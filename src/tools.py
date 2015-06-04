@@ -94,7 +94,7 @@ def traceroute2(parameter):
     dst_ip = get_ip_from_parameter(parameter)
     rcv,snd,ttl_seq = None,None,1
     print "traceroute to %s (%s), hops max %s"%(url,dst_ip,hops_max)
-    while (not rcv or rcv.src!=snd.dst) and ttl_seq<=hops_max:
+    while (not rcv or rcv.src!=dst_ip) and ttl_seq<=hops_max:
         print ttl_seq,
         #for snd,rcv in ans:
         #    print "#%d\t %s"%(snd.ttl,rcv.src)
@@ -105,15 +105,18 @@ def traceroute2(parameter):
             ans[i] = {}
             ans[i]['sr1'] = sr1(IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / TCP(flags=0x2), timeout=2, retry=0, verbose=VERBOSE)
             if ans[i]['sr1'] != None:
-              snd,rcv = ans[i]['sr1']
-              ans[i]['time'] = "?"
-              host = rcv.src
+                rcv = ans[i]['sr1']
+                ans[i]['time'] = "?"
+                host = rcv.src
             else:
-              ans[i]['time'] = "*"
+                ans[i]['time'] = "*"
         print "%s %s %s %s"%(host, ans[0]['time'], ans[1]['time'], ans[2]['time'])
         ttl_seq += 1
 
 
-import sys
-url = sys.argv[1] if len(sys.argv)>1 else 'news.ycombinator.com'
-traceroute2(url)
+if __name__ == "__main__":
+    from functions import *
+    check_sudo()
+    import sys
+    url = sys.argv[1] if len(sys.argv)>1 else 'news.ycombinator.com'
+    traceroute2(url)
