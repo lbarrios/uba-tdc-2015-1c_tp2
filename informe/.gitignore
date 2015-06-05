@@ -12,6 +12,8 @@
 *.bbl
 *.blg
 *.dvi
+*.synctex.gz
+*.pdf
 
 # Build temporary folder #
 ##########################
