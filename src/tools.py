@@ -98,12 +98,24 @@ def get_ip_from_parameter(host):
     if not is_valid_ipv4_address(dst_ip): raise Exception("\n\nLa IP %s correspondiente al parametro %s no parece ser válida."%(dst_ip,host))
     return dst_ip     
 
+"""
+Esta funcion recibe una ip destino, un ttl, y un timeout
+y realiza un echo-request; devuelve un diccionario r
+con los pormenores del resultado.
+
+r['ans']   = answered requests
+r['unans'] = unanswered requests
+r['time']  = tiempo desde request hasta recibir el reply
+r['host']  = host que respondio el reply
+r['hosname']  = hostname (DNS-inverso) que respondio el reply
+
+"""
 def traceroute_sr1_to_ans_i(dst_ip,ttl_seq,timeout):
     from scapy.all import sr, sr1, ICMP, TCP, IP, RandShort
     import datetime
     r = {}
     #r['sr1'] = sr1(IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / TCP(flags=0x2), timeout=2, retry=0, verbose=VERBOSE)
-    packet = IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / ICMP()
+    packet = IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / ICMP(type="echo-request")
     start = datetime.datetime.now()
     r['ans'],r['unans'] = sr(packet, timeout=2, retry=0, verbose=VERBOSE)
     end = datetime.datetime.now()
