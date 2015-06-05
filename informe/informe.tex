@@ -1,0 +1,87 @@
+\documentclass[final,inline,a4paper,narroweqnarray]{ieee}
+% In order to use the figure-defining commands in ieeefig.sty...
+\usepackage{ieeefig}
+% To use utf8 encoding
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+% to place figures
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amsmath}
+% dont use geometry package
+%\usepackage{geometry}
+
+% "hack" to place figures in subsection
+\usepackage{placeins}
+\let\Oldsection\section
+\renewcommand{\section}{\FloatBarrier\Oldsection}
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+\let\Oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
+
+\begin{document}
+
+%----------------------------------------------------------------------
+% Title Information, Abstract and Keywords
+%----------------------------------------------------------------------
+\title[TP N$^o$ 2: Rutas en Internet]{%
+Trabajo Práctico N$^o$ 2: Rutas en Internet}
+
+% format author this way for journal articles.
+\author[Barrios, Benegas, Caravario, Rodriguez]{%
+	Leandro Ezequiel Barrios,
+	\and
+	Gonzalo Benegas,
+	\and
+	Martin Caravario,
+	\and
+	Pedro Rodriguez
+}
+
+% make the title
+\maketitle
+
+% do the abstract
+\begin{abstract}
+
+En el presente Trabajo Práctico nos proponemos experimentar con herramientas 
+y técnicas frecuentemente utilizadas a nivel de red. En particular, nos centraremos en la utilización de \texttt{traceroute}. 
+
+\end{abstract}
+
+% start the main text ...
+
+%----------------------------------------------------------------------
+% SECTION I: Introduction
+%----------------------------------------------------------------------
+\section{ Introducción }
+
+Los objetivos del presente Trabajo Práctico son múltipes: por un lado, entender los protocolos involucrados en cada comunicación o intercambio de datos entre un usuario y un servidor, estando ambos conectados a Internet. Vimos en clase que estos protocolos son tanto de nivel de capa de transporte (TCP, UDP) como de aplicación (DNS, SMTP). Por otro lado, para afianzar nuestros conocimientos, implementaremos una herramienta que cumpla la misma función que \texttt{traceroute} por nuestra cuenta. La función de esta herramienta es la de detectar, a partir del nombre de un dominio (host), cada uno de los nodos intermedios por los que pasa el paquete antes de llegar a la dirección IP correspondiente a dicho host. 
+
+
+\section{ Caracterizando Rutas}
+
+\subsection{ Implementación de tool para hacer traceroute }
+
+\subsection{ Adaptación de la tool }
+Aquí adaptamos la \emph{tool} del inciso anterior para que, una vez terminada la búsqueda, calcule el \emph{valor standard}  o \emph{valor Z del RTT} (ZRTT) de cada salto con respecto a la ruta global de la siguiente manera: si $RTT_i$ es el RTT medido para el salto $i$, se define $ ZRTT_i = \dfrac{RTT_i - \overline{RTT}}{SRTT} $ donde $\overline{RTT}$ y $SRTT$ son el promedio y el desvío estandard de los RTTs de la ruta respectivamente.  
+
+\section{ Experimentación: Traceroute a universidades del mundo }
+En este punto, utizamos la \emph{tool} implementada para enviar paquetes \emph{Echo Request} ICMP a disitintas universidades alrededor del mundo. La idea de enviar paquetes a universidades y no a otras organizaciones es que las universidades contestan este tipo de paquetes con más frecuencia.
+
+De esta forma, probamos comunicarnos con universidades que estuvieran geolocalizadas en distintos lugares del planeta, para luego poder analizar qué camino toma y con qué RTT cada paquete según su destino, 
+
+Noruega - Oslo, www.uio.no, www.enu.kz (Kazakstan), Universidade de Varsovia (www.uw.edu.pl)
+
+\subsection{Gráficos y análisis}
+
+\section{ Contrastando con la realidad }
+A continuación simulamos una conexión mediante sucesivos \emph{pings} (\emph{EchoRequest} $+$ \emph{EchoReply}) con cada una de las universidades analizadas, y estimamos el \emph{RTT} en base a la siguiente ecuación: $ EstimatedRTT = \alpha * EstimatedRTT + (1 - \alpha) * SampleRTT $. 
+
+\end{document}
+
+
+
+
