@@ -8,6 +8,7 @@ VERBOSE = False
 hops_max = 20
 dns_server = "8.8.8.8"
 dns_recursive = True
+packets_per_hop = 3
 
 # Constants, is this ok?
 DNS_RCODE_OK = 0L
@@ -62,7 +63,7 @@ def dns_resolve(host):
     from scapy.all import sr1, IP, UDP, DNS, DNSQR
     rd = 1 if dns_recursive else 0
     res = sr1(IP(dst=dns_server)/UDP()/DNS(rd=1,qd=DNSQR(qname=host)), timeout=.5, verbose=VERBOSE)
-    if res[DNS].rcode != DNS_RCODE_OK:
+    if res == None or res[DNS].rcode != DNS_RCODE_OK:
         raise Exception('''\n\nLa query DNS para el host "%s" devolvio un código de error\nEs posible que el dominio no exista.'''%host)
     answers = res[DNS].an
     count = res[DNS].ancount
@@ -152,13 +153,16 @@ def traceroute2(parameter):
     rcv,snd,ttl_seq = None,None,1
     print "traceroute to %s (%s), hops max %s"%(url,dst_ip,hops_max)
     while (not rcv or host!=dst_ip) and ttl_seq<=hops_max:
-        print "  %s"%ttl_seq,
+        print "Hop #%s"%ttl_seq
         ans = {}
         host = "?"
-        for i in range(0,3):
+        for i in range(0,packets_per_hop):
             ans[i] = rcv = traceroute_sr1_to_ans_i(dst_ip, ttl_seq, 2)
             host = ans[i]['host']
-        print "\t{:15s} {:40s}\t{:6s}\t{:6s}\t{:6s}".format(ans[0]['host'], "(%s)"%ans[0]['hostname'], ans[0]['time'], ans[1]['time'], ans[2]['time'])
+        #print "\t{:15s} {:40s}".format(ans[0]['host'], "(%s)"%ans[0]['hostname'])
+        for i in range(0,packets_per_hop):
+            print "\t{:>15s} {:40s}".format(ans[i]['host'],'(%s)'%ans[i]['hostname']),
+            print "\t{:6s}".format(ans[i]['time'])
         ttl_seq += 1
 
 
