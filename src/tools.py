@@ -61,7 +61,7 @@ http://itgeekchronicles.co.uk/2014/05/12/scapy-iterating-over-dns-responses/
 def dns_resolve(host):
     from scapy.all import sr1, IP, UDP, DNS, DNSQR
     rd = 1 if dns_recursive else 0
-    res = sr1(IP(dst=dns_server)/UDP()/DNS(rd=1,qd=DNSQR(qname=host)), timeout=5, verbose=VERBOSE)
+    res = sr1(IP(dst=dns_server)/UDP()/DNS(rd=1,qd=DNSQR(qname=host)), timeout=.5, verbose=VERBOSE)
     if res[DNS].rcode != DNS_RCODE_OK:
         raise Exception('''\n\nLa query DNS para el host "%s" devolvio un código de error\nEs posible que el dominio no exista.'''%host)
     answers = res[DNS].an
@@ -76,7 +76,9 @@ def reverse_dns_resolve(ip):
     from scapy.all import sr1, IP, UDP, DNS, DNSQR
     if DEBUG: print "Resolviendo el DNS inverso de %s"%ip
     reversed_ip = ".".join([o for o in reversed(ip.split("."))])
-    res = sr1(IP(dst=dns_server)/UDP()/DNS(rd=1,qd=DNSQR(qname='%s.in-addr.arpa'%reversed_ip, qtype='PTR')), timeout=5, verbose=VERBOSE)
+    res = sr1(IP(dst=dns_server)/UDP()/DNS(rd=1,qd=DNSQR(qname='%s.in-addr.arpa'%reversed_ip, qtype='PTR')), timeout=.5, verbose=VERBOSE)
+    if(res == None):
+        return "???"
     #if res[DNS].rcode != DNS_RCODE_OK:
     #    raise Exception('''\n\nLa query DNS para el host "%s" devolvio un código de error\nEs posible que el dominio no exista.'''%host)
     answers = res[DNS].an
@@ -117,7 +119,7 @@ def traceroute_sr1_to_ans_i(dst_ip,ttl_seq,timeout):
     #r['sr1'] = sr1(IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / TCP(flags=0x2), timeout=2, retry=0, verbose=VERBOSE)
     packet = IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / ICMP(type="echo-request")
     start = datetime.datetime.now()
-    r['ans'],r['unans'] = sr(packet, timeout=2, retry=0, verbose=VERBOSE)
+    r['ans'],r['unans'] = sr(packet, timeout=0.5, retry=0, verbose=VERBOSE)
     end = datetime.datetime.now()
     # python time
     #r['start_time'] = start
