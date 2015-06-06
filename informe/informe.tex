@@ -46,8 +46,8 @@ Trabajo Práctico N$^o$ 2: Rutas en Internet}
 % do the abstract
 \begin{abstract}
 
-En el presente Trabajo Práctico nos proponemos experimentar con herramientas 
-y técnicas frecuentemente utilizadas a nivel de red. En particular, nos centraremos en la utilización de \texttt{traceroute}. 
+En el presente Trabajo Práctico nos propondremos experimentar con herramientas 
+y técnicas frecuentemente utilizadas a nivel de red. En particular, nos centraremos en la utilización de \texttt{traceroute} como herramienta para medir tiempos y \texttt{RTTS}. 
 
 \end{abstract}
 
@@ -58,7 +58,7 @@ y técnicas frecuentemente utilizadas a nivel de red. En particular, nos centrar
 %----------------------------------------------------------------------
 \section{ Introducción }
 
-Los objetivos del presente Trabajo Práctico son múltipes: por un lado, entender los protocolos involucrados en cada comunicación o intercambio de datos entre un usuario y un servidor, estando ambos conectados a Internet. Vimos en clase que estos protocolos son tanto de nivel de capa de transporte (TCP, UDP) como de aplicación (DNS, SMTP). Por otro lado, para afianzar nuestros conocimientos, implementaremos una herramienta que cumpla la misma función que \texttt{traceroute} por nuestra cuenta. La función de esta herramienta es la de detectar, a partir del nombre de un dominio (host), cada uno de los nodos intermedios por los que pasa el paquete antes de llegar a la dirección IP correspondiente a dicho host. 
+Los objetivos del presente Trabajo Práctico son múltipes: por un lado, entender los protocolos involucrados en cada comunicación o intercambio de datos entre un usuario y un servidor, estando ambos conectados a Internet. Vimos en clase que estos protocolos son tanto de nivel de capa de transporte (TCP, UDP) como de aplicación (DNS, SMTP). Por otro lado, para afianzar nuestros conocimientos, implementaremos una herramienta que cumpla la misma función que \texttt{traceroute} por nuestra cuenta. La función de esta herramienta es la de detectar, a partir del nombre de un dominio (host), cada uno de los nodos intermedios por los que pasa el paquete antes de llegar a la dirección IP correspondiente a dicho host. El objetivo de esto será el de analizar los RTT a distintas universidades del mundo. 
 
 
 \section{ Caracterizando Rutas}
@@ -72,8 +72,18 @@ Aquí adaptamos la \emph{tool} del inciso anterior para que, una vez terminada l
 En este punto, utizamos la \emph{tool} implementada para enviar paquetes \emph{Echo Request} ICMP a disitintas universidades alrededor del mundo. La idea de enviar paquetes a universidades y no a otras organizaciones es que las universidades contestan este tipo de paquetes con más frecuencia.
 
 De esta forma, probamos comunicarnos con universidades que estuvieran geolocalizadas en distintos lugares del planeta, para luego poder analizar qué camino toma y con qué RTT cada paquete según su destino, 
+La universidades fueron las siguientes:
 
-Noruega - Oslo, www.uio.no, www.enu.kz (Kazakstan), Universidade de Varsovia (www.uw.edu.pl)
+Noruega: Oslo, www.uio.no
+
+
+Kazakstan: www.enu.kz
+
+
+Varsovia: www.uw.edu.pl
+
+
+Tokyo: www.u-tokyo.ac.jp 
 
 \subsection{Gráficos y análisis}
 
