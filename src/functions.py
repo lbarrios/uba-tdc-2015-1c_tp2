@@ -32,7 +32,8 @@ def plot_routes(input_file, output_file):
         data = json.loads(f.read())
 
     previous_node = (-34.5450875, -58.4395502)
-        
+
+    hopn = 1
     for hop in data:
         n = len(hop)
         freqs = defaultdict(int)
@@ -47,6 +48,8 @@ def plot_routes(input_file, output_file):
             path = [previous_node, coords]
             weight = BASE_WEIGHT * float(freq) / n
             route_map.addpath(path, "#FF0000", weight)
+            route_map.addpoint(coords[0], coords[1], title=str(hopn))
+            print 'new point'
 
         sorted_freqs = freqs.items()
         sorted_freqs.sort(key=lambda x: x[1], reverse=True)
@@ -55,5 +58,7 @@ def plot_routes(input_file, output_file):
         coords = get_coords(most_frequent_ip)
         if coords is not None:
             previous_node = coords
+            # print most_frequent_ip
+        hopn += 1
         
     route_map.draw(output_file)
