@@ -8,7 +8,7 @@ VERBOSE = False
 hops_max = 20
 dns_server = "8.8.8.8"
 dns_recursive = True
-packets_per_hop = 3
+packets_per_hop = 20
 
 # Constants, is this ok?
 DNS_RCODE_OK = 0L
@@ -154,11 +154,10 @@ def traceroute2(parameter):
         print "Hop #%s"%ttl_seq
         ans = {}
         host = "?"
+        hop_list = list()
         for i in range(0,packets_per_hop):
             ans[i] = rcv = traceroute_sr1_to_ans_i(dst_ip, ttl_seq, 2)
             host = ans[i]['host']
-        hop_list = list()
-        for i in range(0,packets_per_hop):
             print "\t{:>15s} {:40s}".format(ans[i]['host'],'(%s)'%ans[i]['hostname']),
             print "\t{:6s}".format(ans[i]['time'])
             res = {}
