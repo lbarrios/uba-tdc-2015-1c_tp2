@@ -5,10 +5,10 @@
 DEBUG = False
 #DEBUG = True
 VERBOSE = False
-hops_max = 20
+hops_max = 40
 dns_server = "8.8.8.8"
 dns_recursive = True
-packets_per_hop = 20
+packets_per_hop = 3
 
 # Constants, is this ok?
 DNS_RCODE_OK = 0L
@@ -176,5 +176,5 @@ if __name__ == "__main__":
     import sys
     url = sys.argv[1] if len(sys.argv)>1 else 'news.ycombinator.com'
     traceroute_out = traceroute2(url)
-    with open("output.json", 'w') as f:
+    with open(url + '.json', 'w') as f:
         f.write(json.dumps(traceroute_out, indent=4))

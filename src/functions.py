@@ -52,8 +52,8 @@ def plot_routes(input_file, output_file):
             weight = BASE_WEIGHT * float(freq) / n
             route_map.addpath(path, "#FF0000", weight)
             route_map.addpoint(coords[0], coords[1], title=str(hopn))
-            print 'new point'
 
+        hopn += 1
         sorted_freqs = freqs.items()
         sorted_freqs.sort(key=lambda x: x[1], reverse=True)
         most_frequent_ip = sorted_freqs[0][0]
@@ -61,7 +61,5 @@ def plot_routes(input_file, output_file):
         coords = get_coords(most_frequent_ip)
         if coords is not None:
             previous_node = coords
-            # print most_frequent_ip
-        hopn += 1
         
     route_map.draw(output_file)
