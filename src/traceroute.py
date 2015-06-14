@@ -8,7 +8,7 @@ VERBOSE = False
 hops_max = 40
 dns_server = "8.8.8.8"
 dns_recursive = True
-packets_per_hop = 3
+packets_per_hop = 20
 
 # Constants, is this ok?
 DNS_RCODE_OK = 0L
