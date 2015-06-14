@@ -1,0 +1,223 @@
+[
+    [
+        {
+            "ip": "192.168.1.1", 
+            "hostname": "???", 
+            "rtt": "51 ms"
+        }, 
+        {
+            "ip": "192.168.1.1", 
+            "hostname": "???", 
+            "rtt": "61 ms"
+        }, 
+        {
+            "ip": "192.168.1.1", 
+            "hostname": "???", 
+            "rtt": "47 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "200.3.60.27", 
+            "hostname": "host27.200-3-60.telecom.net.ar", 
+            "rtt": "66 ms"
+        }, 
+        {
+            "ip": "200.3.60.27", 
+            "hostname": "host27.200-3-60.telecom.net.ar", 
+            "rtt": "59 ms"
+        }, 
+        {
+            "ip": "200.3.60.27", 
+            "hostname": "???", 
+            "rtt": "65 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "200.117.127.93", 
+            "hostname": "host93.200-117-127.telecom.net.ar", 
+            "rtt": "222 ms"
+        }, 
+        {
+            "ip": "200.117.127.93", 
+            "hostname": "host93.200-117-127.telecom.net.ar", 
+            "rtt": "82 ms"
+        }, 
+        {
+            "ip": "200.117.127.93", 
+            "hostname": "host93.200-117-127.telecom.net.ar", 
+            "rtt": "71 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "190.224.165.110", 
+            "hostname": "host110.190-224-165.telecom.net.ar", 
+            "rtt": "257 ms"
+        }, 
+        {
+            "ip": "190.224.165.110", 
+            "hostname": "host110.190-224-165.telecom.net.ar", 
+            "rtt": "76 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "195.22.220.104", 
+            "hostname": "xe-8-1-1.baires5.bai.seabone.net", 
+            "rtt": "63 ms"
+        }, 
+        {
+            "ip": "195.22.220.104", 
+            "hostname": "xe-8-1-1.baires5.bai.seabone.net", 
+            "rtt": "55 ms"
+        }, 
+        {
+            "ip": "195.22.220.104", 
+            "hostname": "xe-8-1-1.baires5.bai.seabone.net", 
+            "rtt": "61 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "149.3.183.71", 
+            "hostname": "???", 
+            "rtt": "301 ms"
+        }, 
+        {
+            "ip": "149.3.183.71", 
+            "hostname": "???", 
+            "rtt": "305 ms"
+        }, 
+        {
+            "ip": "149.3.183.71", 
+            "hostname": "???", 
+            "rtt": "301 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "195.66.225.24", 
+            "hostname": "???", 
+            "rtt": "301 ms"
+        }, 
+        {
+            "ip": "195.66.225.24", 
+            "hostname": "???", 
+            "rtt": "324 ms"
+        }, 
+        {
+            "ip": "195.66.225.24", 
+            "hostname": "???", 
+            "rtt": "310 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "109.105.102.25", 
+            "hostname": "dk-uni.nordu.net", 
+            "rtt": "304 ms"
+        }, 
+        {
+            "ip": "109.105.102.25", 
+            "hostname": "dk-uni.nordu.net", 
+            "rtt": "331 ms"
+        }, 
+        {
+            "ip": "109.105.102.25", 
+            "hostname": "dk-uni.nordu.net", 
+            "rtt": "309 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "109.105.102.26", 
+            "hostname": "stolav-gw2.uninett.no", 
+            "rtt": "329 ms"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "109.105.102.26", 
+            "hostname": "stolav-gw2.uninett.no", 
+            "rtt": "447 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "128.39.255.145", 
+            "hostname": "???", 
+            "rtt": "343 ms"
+        }, 
+        {
+            "ip": "128.39.255.145", 
+            "hostname": "oslo-gw1.uninett.no", 
+            "rtt": "334 ms"
+        }, 
+        {
+            "ip": "128.39.255.145", 
+            "hostname": "oslo-gw1.uninett.no", 
+            "rtt": "331 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "128.39.65.18", 
+            "hostname": "???", 
+            "rtt": "349 ms"
+        }, 
+        {
+            "ip": "128.39.65.18", 
+            "hostname": "uio-gw8.uio.no", 
+            "rtt": "338 ms"
+        }, 
+        {
+            "ip": "128.39.65.18", 
+            "hostname": "uio-gw8.uio.no", 
+            "rtt": "327 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "129.240.25.18", 
+            "hostname": "mrom-gw2.uio.no", 
+            "rtt": "333 ms"
+        }, 
+        {
+            "ip": "129.240.25.18", 
+            "hostname": "???", 
+            "rtt": "337 ms"
+        }, 
+        {
+            "ip": "129.240.25.18", 
+            "hostname": "mrom-gw2.uio.no", 
+            "rtt": "541 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "129.240.8.200", 
+            "hostname": "www.uio.no", 
+            "rtt": "343 ms"
+        }, 
+        {
+            "ip": "129.240.8.200", 
+            "hostname": "www.uio.no", 
+            "rtt": "337 ms"
+        }, 
+        {
+            "ip": "129.240.8.200", 
+            "hostname": "www.uio.no", 
+            "rtt": "330 ms"
+        }
+    ]
+]
