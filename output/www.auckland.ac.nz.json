@@ -1,0 +1,274 @@
+[
+    [
+        {
+            "ip": "192.168.1.1", 
+            "hostname": "???", 
+            "rtt": "9 ms"
+        }, 
+        {
+            "ip": "192.168.1.1", 
+            "hostname": "???", 
+            "rtt": "17 ms"
+        }, 
+        {
+            "ip": "192.168.1.1", 
+            "hostname": "???", 
+            "rtt": "9 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "200.3.60.27", 
+            "hostname": "host27.200-3-60.telecom.net.ar", 
+            "rtt": "32 ms"
+        }, 
+        {
+            "ip": "200.3.60.27", 
+            "hostname": "host27.200-3-60.telecom.net.ar", 
+            "rtt": "29 ms"
+        }, 
+        {
+            "ip": "200.3.60.27", 
+            "hostname": "host27.200-3-60.telecom.net.ar", 
+            "rtt": "28 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "200.117.127.89", 
+            "hostname": "host89.200-117-127.telecom.net.ar", 
+            "rtt": "36 ms"
+        }, 
+        {
+            "ip": "200.117.127.89", 
+            "hostname": "???", 
+            "rtt": "45 ms"
+        }, 
+        {
+            "ip": "200.117.127.89", 
+            "hostname": "host89.200-117-127.telecom.net.ar", 
+            "rtt": "30 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "190.224.165.114", 
+            "hostname": "host114.190-224-165.telecom.net.ar", 
+            "rtt": "37 ms"
+        }, 
+        {
+            "ip": "190.224.165.114", 
+            "hostname": "host114.190-224-165.telecom.net.ar", 
+            "rtt": "41 ms"
+        }, 
+        {
+            "ip": "190.224.165.114", 
+            "hostname": "host114.190-224-165.telecom.net.ar", 
+            "rtt": "39 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "195.22.220.97", 
+            "hostname": "xe-0-0-2.baires5.bai.seabone.net", 
+            "rtt": "55 ms"
+        }, 
+        {
+            "ip": "195.22.220.97", 
+            "hostname": "xe-0-0-2.baires5.bai.seabone.net", 
+            "rtt": "44 ms"
+        }, 
+        {
+            "ip": "195.22.220.97", 
+            "hostname": "xe-0-0-2.baires5.bai.seabone.net", 
+            "rtt": "67 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "89.221.35.129", 
+            "hostname": "xe-11-1-0.paloalto2.pao.seabone.net", 
+            "rtt": "361 ms"
+        }, 
+        {
+            "ip": "89.221.35.129", 
+            "hostname": "xe-11-1-0.paloalto2.pao.seabone.net", 
+            "rtt": "349 ms"
+        }, 
+        {
+            "ip": "89.221.35.129", 
+            "hostname": "xe-11-1-0.paloalto2.pao.seabone.net", 
+            "rtt": "257 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "202.158.194.170", 
+            "hostname": "xe-3-0-0.bb1.a.lax.aarnet.net.au", 
+            "rtt": "291 ms"
+        }, 
+        {
+            "ip": "202.158.194.170", 
+            "hostname": "xe-3-0-0.bb1.a.lax.aarnet.net.au", 
+            "rtt": "306 ms"
+        }, 
+        {
+            "ip": "202.158.194.170", 
+            "hostname": "xe-3-0-0.bb1.a.lax.aarnet.net.au", 
+            "rtt": "264 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "202.158.194.172", 
+            "hostname": "xe-0-0-3.pe1.tkpa.akl.aarnet.net.au", 
+            "rtt": "468 ms"
+        }, 
+        {
+            "ip": "202.158.194.172", 
+            "hostname": "xe-0-0-3.pe1.tkpa.akl.aarnet.net.au", 
+            "rtt": "516 ms"
+        }, 
+        {
+            "ip": "202.158.194.172", 
+            "hostname": "xe-0-0-3.pe1.tkpa.akl.aarnet.net.au", 
+            "rtt": "384 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "182.255.119.139", 
+            "hostname": "et-1-0-0-201.and12-nsh.reannz.co.nz", 
+            "rtt": "374 ms"
+        }, 
+        {
+            "ip": "182.255.119.139", 
+            "hostname": "et-1-0-0-201.and12-nsh.reannz.co.nz", 
+            "rtt": "411 ms"
+        }, 
+        {
+            "ip": "182.255.119.139", 
+            "hostname": "et-1-0-0-201.and12-nsh.reannz.co.nz", 
+            "rtt": "467 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "210.7.39.251", 
+            "hostname": "???", 
+            "rtt": "473 ms"
+        }, 
+        {
+            "ip": "210.7.39.251", 
+            "hostname": "???", 
+            "rtt": "404 ms"
+        }, 
+        {
+            "ip": "210.7.39.251", 
+            "hostname": "???", 
+            "rtt": "475 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "210.7.39.178", 
+            "hostname": "???", 
+            "rtt": "381 ms"
+        }, 
+        {
+            "ip": "210.7.39.178", 
+            "hostname": "???", 
+            "rtt": "376 ms"
+        }, 
+        {
+            "ip": "210.7.39.178", 
+            "hostname": "???", 
+            "rtt": "395 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "130.216.95.106", 
+            "hostname": "br-cpf1-north.net.auckland.ac.nz", 
+            "rtt": "380 ms"
+        }, 
+        {
+            "ip": "130.216.95.106", 
+            "hostname": "br-cpf1-north.net.auckland.ac.nz", 
+            "rtt": "405 ms"
+        }, 
+        {
+            "ip": "130.216.95.106", 
+            "hostname": "br-cpf1-north.net.auckland.ac.nz", 
+            "rtt": "406 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "130.216.95.122", 
+            "hostname": "cxj-alfa-430.net.auckland.ac.nz", 
+            "rtt": "416 ms"
+        }, 
+        {
+            "ip": "130.216.95.122", 
+            "hostname": "cxj-alfa-430.net.auckland.ac.nz", 
+            "rtt": "471 ms"
+        }, 
+        {
+            "ip": "130.216.95.122", 
+            "hostname": "cxj-alfa-430.net.auckland.ac.nz", 
+            "rtt": "454 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "130.216.159.127", 
+            "hostname": "www.auckland.ac.nz", 
+            "rtt": "384 ms"
+        }, 
+        {
+            "ip": "130.216.159.127", 
+            "hostname": "www.auckland.ac.nz", 
+            "rtt": "425 ms"
+        }, 
+        {
+            "ip": "130.216.159.127", 
+            "hostname": "www.auckland.ac.nz", 
+            "rtt": "471 ms"
+        }
+    ]
+]
