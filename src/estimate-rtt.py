@@ -1,4 +1,4 @@
-import csv, subprocess, sys
+import csv, math, subprocess, sys
 
 host = sys.argv[1]  # host al que hace el ping
 n = int(sys.argv[2])  # cantidad de pings
@@ -19,9 +19,17 @@ for row in csvreader:
     if i > n:
         break
     
-    sample_rtt = float(row[-2][5:])
-    if i == 1:
-        estimated_rtt = sample_rtt
-    estimated_rtt = alpha * estimated_rtt + (1 - alpha) * sample_rtt
+    try:
+        sample_rtt = float(row[-2][5:])
+        if i == 1:
+            estimated_rtt = sample_rtt
+        estimated_rtt = alpha * estimated_rtt + (1 - alpha) * sample_rtt
+    except:
+        pass
 
 print estimated_rtt  # una estimacion mejor que el promedio, ya que tiene en cuenta los outliers
+MSS = 1460  # chequear
+# OBS: p esta mal definido en el enunciado, creo yo
+p = 0.0001  # FIXME: calcularlo de alguna forma
+mathis_throughput = MSS / (estimated_rtt * math.sqrt(p))
+print mathis_throughput
