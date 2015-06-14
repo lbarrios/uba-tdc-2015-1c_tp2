@@ -56,7 +56,7 @@ y técnicas frecuentemente utilizadas a nivel de red. En particular, nos centrar
 %----------------------------------------------------------------------
 % SECTION I: Introduction
 %----------------------------------------------------------------------
-\section{ Introducción }
+\section{Introducción}
 
 Los objetivos del presente Trabajo Práctico son múltipes: por un lado, entender 
 los protocolos involucrados en cada comunicación o intercambio de datos entre un 
@@ -71,25 +71,37 @@ nodos intermedios por los que pasa el paquete antes de llegar a la dirección
  RTT a distintas universidades del mundo. 
 
 
-\section{ Caracterizando Rutas}
+%----------------------------------------------------------------------
+% SECTION II: Caracterizando Rutas
+%----------------------------------------------------------------------
+\section{Caracterizando Rutas}
 
-\subsection{ Implementación de tool para hacer traceroute }
-Algo importante que nos facilitó el análisis fue la implementación de una función
-DNSInverso, que para cada IP nos permitió reconocer el nombre de su máquina correspondiente,
-para poder ir detectando para cada hop, en que localización del globo se encuentra dicha
-máquina. 
+  %----------------------------------------------------------------------
+  %  SUBSECTION III: Implementación de tool para hacer traceroute
+  %----------------------------------------------------------------------
+  \subsection{Implementación de tool para hacer traceroute}
+  Algo importante que nos facilitó el análisis fue la implementación de una función
+  DNSInverso, que para cada IP nos permitió reconocer el nombre de su máquina correspondiente,
+  para poder ir detectando para cada hop, en que localización del globo se encuentra dicha
+  máquina. 
 
-\subsection{ Adaptación de la tool }
-Aquí adaptamos la \emph{tool} del inciso anterior para que, una vez terminada 
-la búsqueda, calcule el \emph{valor standard}  o \emph{valor Z del RTT} (ZRTT) 
-de cada salto con respecto a la ruta global de la siguiente manera: si $RTT_i$ 
-es el RTT medido para el salto $i$, se define $ ZRTT_i = \dfrac{RTT_i 
-- \overline{RTT}}{SRTT} $ donde $\overline{RTT}$ y $SRTT$ son el promedio 
-y el desvío estandard de los RTTs de la ruta respectivamente.  
+  %----------------------------------------------------------------------
+  %  SUBSECTION III: Adaptación de la tool
+  %----------------------------------------------------------------------
+  \subsection{Adaptación de la tool}
+  Aquí adaptamos la \emph{tool} del inciso anterior para que, una vez terminada 
+  la búsqueda, calcule el \emph{valor standard}  o \emph{valor Z del RTT} (ZRTT) 
+  de cada salto con respecto a la ruta global de la siguiente manera: si $RTT_i$ 
+  es el RTT medido para el salto $i$, se define $ ZRTT_i = \dfrac{RTT_i 
+  - \overline{RTT}}{SRTT} $ donde $\overline{RTT}$ y $SRTT$ son el promedio 
+  y el desvío estandard de los RTTs de la ruta respectivamente.  
 
-Lo interesante de esta adaptación es que ...
+  Lo interesante de esta adaptación es que ...
 
-\section{ Experimentación: Traceroute a universidades del mundo }
+%----------------------------------------------------------------------
+% SECTION III: Traceroute a universidades del mundo
+%----------------------------------------------------------------------
+\section{Experimentación: Traceroute a universidades del mundo}
 
 A partir de la herramienta \texttt{traceroute2} y tomando como IP origen la de la PC de uno de los integrantes del grupo,
 realizamos rastreos para distintas universidades alrededor del mundo. Cada una de estas universidades las identificamos
@@ -124,11 +136,10 @@ La universidades que terminamos eligiendo fueron: en Noruega a <<www.uio.no>>, e
 
 \subsection{Gráficos y análisis}
 
-\section{ Contrastando con la realidad }
+%----------------------------------------------------------------------
+% SECTION IV: Contrastando con la realidad
+%----------------------------------------------------------------------
+\section{Contrastando con la realidad}
 A continuación simulamos una conexión mediante sucesivos \emph{pings} (\emph{EchoRequest} $+$ \emph{EchoReply}) con cada una de las universidades analizadas, y estimamos el \emph{RTT} en base a la siguiente ecuación: $ EstimatedRTT = \alpha * EstimatedRTT + (1 - \alpha) * SampleRTT $. 
 
 \end{document}
-
-
-
-
