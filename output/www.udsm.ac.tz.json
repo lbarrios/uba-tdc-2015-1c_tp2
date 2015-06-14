@@ -1,0 +1,682 @@
+[
+    [
+        {
+            "ip": "192.168.1.1", 
+            "hostname": "???", 
+            "rtt": "10 ms"
+        }, 
+        {
+            "ip": "192.168.1.1", 
+            "hostname": "???", 
+            "rtt": "7 ms"
+        }, 
+        {
+            "ip": "192.168.1.1", 
+            "hostname": "???", 
+            "rtt": "10 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "200.3.60.27", 
+            "hostname": "host27.200-3-60.telecom.net.ar", 
+            "rtt": "25 ms"
+        }, 
+        {
+            "ip": "200.3.60.27", 
+            "hostname": "host27.200-3-60.telecom.net.ar", 
+            "rtt": "31 ms"
+        }, 
+        {
+            "ip": "200.3.60.27", 
+            "hostname": "host27.200-3-60.telecom.net.ar", 
+            "rtt": "26 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "200.117.127.89", 
+            "hostname": "host89.200-117-127.telecom.net.ar", 
+            "rtt": "27 ms"
+        }, 
+        {
+            "ip": "200.117.127.89", 
+            "hostname": "host89.200-117-127.telecom.net.ar", 
+            "rtt": "29 ms"
+        }, 
+        {
+            "ip": "200.117.127.89", 
+            "hostname": "host89.200-117-127.telecom.net.ar", 
+            "rtt": "30 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "190.224.165.114", 
+            "hostname": "host114.190-224-165.telecom.net.ar", 
+            "rtt": "34 ms"
+        }, 
+        {
+            "ip": "190.224.165.114", 
+            "hostname": "host114.190-224-165.telecom.net.ar", 
+            "rtt": "32 ms"
+        }, 
+        {
+            "ip": "190.224.165.114", 
+            "hostname": "host114.190-224-165.telecom.net.ar", 
+            "rtt": "33 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "195.22.220.77", 
+            "hostname": "xe-8-1-2.baires5.bai.seabone.net", 
+            "rtt": "34 ms"
+        }, 
+        {
+            "ip": "195.22.220.77", 
+            "hostname": "xe-8-1-2.baires5.bai.seabone.net", 
+            "rtt": "39 ms"
+        }, 
+        {
+            "ip": "195.22.220.77", 
+            "hostname": "xe-8-1-2.baires5.bai.seabone.net", 
+            "rtt": "35 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "213.144.176.224", 
+            "hostname": "xe-11-0-0.marsig2.mar.seabone.net", 
+            "rtt": "379 ms"
+        }, 
+        {
+            "ip": "213.144.176.224", 
+            "hostname": "xe-11-0-0.marsig2.mar.seabone.net", 
+            "rtt": "288 ms"
+        }, 
+        {
+            "ip": "213.144.176.224", 
+            "hostname": "xe-11-0-0.marsig2.mar.seabone.net", 
+            "rtt": "340 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "213.144.176.133", 
+            "hostname": "seacom.marsig2.mar.seabone.net", 
+            "rtt": "370 ms"
+        }, 
+        {
+            "ip": "213.144.176.133", 
+            "hostname": "seacom.marsig2.mar.seabone.net", 
+            "rtt": "363 ms"
+        }, 
+        {
+            "ip": "213.144.176.133", 
+            "hostname": "seacom.marsig2.mar.seabone.net", 
+            "rtt": "369 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "105.16.32.2", 
+            "hostname": "ae-2.cr-02-mrs.fr.seacomnet.com", 
+            "rtt": "410 ms"
+        }, 
+        {
+            "ip": "105.16.32.2", 
+            "hostname": "ae-2.cr-02-mrs.fr.seacomnet.com", 
+            "rtt": "437 ms"
+        }, 
+        {
+            "ip": "105.16.32.2", 
+            "hostname": "ae-2.cr-02-mrs.fr.seacomnet.com", 
+            "rtt": "464 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "105.16.8.33", 
+            "hostname": "xe-0-1-0-1.cr-02-mba.ke.seacomnet.com", 
+            "rtt": "477 ms"
+        }, 
+        {
+            "ip": "105.16.8.33", 
+            "hostname": "xe-0-1-0-1.cr-02-mba.ke.seacomnet.com", 
+            "rtt": "473 ms"
+        }, 
+        {
+            "ip": "105.16.8.33", 
+            "hostname": "xe-0-1-0-1.cr-02-mba.ke.seacomnet.com", 
+            "rtt": "412 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "105.16.8.18", 
+            "hostname": "xe-0-0-0-0.cr-02-dar.tz.seacomnet.com", 
+            "rtt": "417 ms"
+        }, 
+        {
+            "ip": "105.16.8.18", 
+            "hostname": "xe-0-0-0-0.cr-02-dar.tz.seacomnet.com", 
+            "rtt": "475 ms"
+        }, 
+        {
+            "ip": "105.16.8.18", 
+            "hostname": "xe-0-0-0-0.cr-02-dar.tz.seacomnet.com", 
+            "rtt": "465 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "105.16.22.9", 
+            "hostname": "xe-0-0-0-0.er-01-dar.tz.seacomnet.com", 
+            "rtt": "472 ms"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "105.16.22.9", 
+            "hostname": "xe-0-0-0-0.er-01-dar.tz.seacomnet.com", 
+            "rtt": "15 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "105.16.22.9", 
+            "hostname": "xe-0-0-0-0.er-01-dar.tz.seacomnet.com", 
+            "rtt": "457 ms"
+        }, 
+        {
+            "ip": "105.21.160.34", 
+            "hostname": "ae-2-26.customer-gw-university-of-dar-es-salaam.er-01-dar.tz.seacomnet.com", 
+            "rtt": "402 ms"
+        }, 
+        {
+            "ip": "105.21.160.34", 
+            "hostname": "ae-2-26.customer-gw-university-of-dar-es-salaam.er-01-dar.tz.seacomnet.com", 
+            "rtt": "417 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "196.44.160.4", 
+            "hostname": "4-160-44-196.udsm.ac.tz", 
+            "rtt": "403 ms"
+        }, 
+        {
+            "ip": "196.44.160.4", 
+            "hostname": "4-160-44-196.udsm.ac.tz", 
+            "rtt": "445 ms"
+        }, 
+        {
+            "ip": "196.44.160.4", 
+            "hostname": "4-160-44-196.udsm.ac.tz", 
+            "rtt": "452 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ]
+]
