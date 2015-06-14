@@ -1,0 +1,257 @@
+[
+    [
+        {
+            "ip": "192.168.1.1", 
+            "hostname": "???", 
+            "rtt": "46 ms"
+        }, 
+        {
+            "ip": "192.168.1.1", 
+            "hostname": "???", 
+            "rtt": "47 ms"
+        }, 
+        {
+            "ip": "192.168.1.1", 
+            "hostname": "???", 
+            "rtt": "42 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "200.3.60.27", 
+            "hostname": "host27.200-3-60.telecom.net.ar", 
+            "rtt": "187 ms"
+        }, 
+        {
+            "ip": "200.3.60.27", 
+            "hostname": "host27.200-3-60.telecom.net.ar", 
+            "rtt": "59 ms"
+        }, 
+        {
+            "ip": "200.3.60.27", 
+            "hostname": "host27.200-3-60.telecom.net.ar", 
+            "rtt": "73 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "190.225.252.110", 
+            "hostname": "host110.190-225-252.telecom.net.ar", 
+            "rtt": "416 ms"
+        }, 
+        {
+            "ip": "190.225.252.110", 
+            "hostname": "host110.190-225-252.telecom.net.ar", 
+            "rtt": "210 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "198.32.124.176", 
+            "hostname": "nota.he.net", 
+            "rtt": "204 ms"
+        }, 
+        {
+            "ip": "198.32.124.176", 
+            "hostname": "???", 
+            "rtt": "211 ms"
+        }, 
+        {
+            "ip": "198.32.124.176", 
+            "hostname": "nota.he.net", 
+            "rtt": "401 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "184.105.222.29", 
+            "hostname": "10ge15-4.core1.dal1.he.net", 
+            "rtt": "409 ms"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "184.105.222.77", 
+            "hostname": "10ge15-4.core1.phx2.he.net", 
+            "rtt": "383 ms"
+        }, 
+        {
+            "ip": "184.105.222.77", 
+            "hostname": "10ge15-4.core1.phx2.he.net", 
+            "rtt": "304 ms"
+        }, 
+        {
+            "ip": "184.105.222.77", 
+            "hostname": "10ge15-4.core1.phx2.he.net", 
+            "rtt": "280 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "184.105.222.86", 
+            "hostname": "10ge1-3.core1.lax2.he.net", 
+            "rtt": "297 ms"
+        }, 
+        {
+            "ip": "184.105.222.86", 
+            "hostname": "10ge1-3.core1.lax2.he.net", 
+            "rtt": "306 ms"
+        }, 
+        {
+            "ip": "184.105.222.86", 
+            "hostname": "10ge1-3.core1.lax2.he.net", 
+            "rtt": "298 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "221.111.203.1", 
+            "hostname": "softbank221111203001.bbtec.net", 
+            "rtt": "454 ms"
+        }, 
+        {
+            "ip": "221.111.203.1", 
+            "hostname": "softbank221111203001.bbtec.net", 
+            "rtt": "462 ms"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "61.206.157.74", 
+            "hostname": "???", 
+            "rtt": "472 ms"
+        }, 
+        {
+            "ip": "61.206.157.74", 
+            "hostname": "???", 
+            "rtt": "474 ms"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "124.83.252.242", 
+            "hostname": "???", 
+            "rtt": "493 ms"
+        }, 
+        {
+            "ip": "124.83.252.242", 
+            "hostname": "???", 
+            "rtt": "487 ms"
+        }, 
+        {
+            "ip": "124.83.252.242", 
+            "hostname": "???", 
+            "rtt": "465 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "158.205.134.22", 
+            "hostname": "ae1.fk1cr01.idc.jp", 
+            "rtt": "467 ms"
+        }, 
+        {
+            "ip": "158.205.134.22", 
+            "hostname": "???", 
+            "rtt": "464 ms"
+        }, 
+        {
+            "ip": "*", 
+            "hostname": "*", 
+            "rtt": "*"
+        }
+    ], 
+    [
+        {
+            "ip": "158.205.134.22", 
+            "hostname": "ae1.fk1cr01.idc.jp", 
+            "rtt": "39 ms"
+        }, 
+        {
+            "ip": "158.205.121.250", 
+            "hostname": "po2.l321.fk1.eg.idc.jp", 
+            "rtt": "273 ms"
+        }, 
+        {
+            "ip": "158.205.121.250", 
+            "hostname": "po2.l321.fk1.eg.idc.jp", 
+            "rtt": "471 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "154.34.240.254", 
+            "hostname": "???", 
+            "rtt": "479 ms"
+        }, 
+        {
+            "ip": "154.34.240.254", 
+            "hostname": "???", 
+            "rtt": "475 ms"
+        }, 
+        {
+            "ip": "154.34.240.254", 
+            "hostname": "???", 
+            "rtt": "486 ms"
+        }
+    ], 
+    [
+        {
+            "ip": "210.152.135.178", 
+            "hostname": "???", 
+            "rtt": "478 ms"
+        }, 
+        {
+            "ip": "210.152.135.178", 
+            "hostname": "???", 
+            "rtt": "486 ms"
+        }, 
+        {
+            "ip": "210.152.135.178", 
+            "hostname": "???", 
+            "rtt": "470 ms"
+        }
+    ]
+]
