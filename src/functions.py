@@ -34,6 +34,9 @@ def plot_routes(input_file, output_file):
     previous_node = (-34.5450875, -58.4395502)
 
     hopn = 1
+
+    route_map.addpoint(previous_node[0], previous_node[1], title=str(hopn))
+                
     for hop in data:
         n = len(hop)
         freqs = defaultdict(int)
