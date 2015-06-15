@@ -56,42 +56,90 @@ y técnicas frecuentemente utilizadas a nivel de red. En particular, nos centrar
 %----------------------------------------------------------------------
 % SECTION I: Introduction
 %----------------------------------------------------------------------
-\section{ Introducción }
+\section{Introducción}
 
-Los objetivos del presente Trabajo Práctico son múltipes: por un lado, entender los protocolos involucrados en cada comunicación o intercambio de datos entre un usuario y un servidor, estando ambos conectados a Internet. Vimos en clase que estos protocolos son tanto de nivel de capa de transporte (TCP, UDP) como de aplicación (DNS, SMTP). Por otro lado, para afianzar nuestros conocimientos, implementaremos una herramienta que cumpla la misma función que \texttt{traceroute} por nuestra cuenta. La función de esta herramienta es la de detectar, a partir del nombre de un dominio (host), cada uno de los nodos intermedios por los que pasa el paquete antes de llegar a la dirección IP correspondiente a dicho host. El objetivo de esto será el de analizar los RTT a distintas universidades del mundo. 
-
-
-\section{ Caracterizando Rutas}
-
-\subsection{ Implementación de tool para hacer traceroute }
-
-\subsection{ Adaptación de la tool }
-Aquí adaptamos la \emph{tool} del inciso anterior para que, una vez terminada la búsqueda, calcule el \emph{valor standard}  o \emph{valor Z del RTT} (ZRTT) de cada salto con respecto a la ruta global de la siguiente manera: si $RTT_i$ es el RTT medido para el salto $i$, se define $ ZRTT_i = \dfrac{RTT_i - \overline{RTT}}{SRTT} $ donde $\overline{RTT}$ y $SRTT$ son el promedio y el desvío estandard de los RTTs de la ruta respectivamente.  
-
-\section{ Experimentación: Traceroute a universidades del mundo }
-En este punto, utizamos la \emph{tool} implementada para enviar paquetes \emph{Echo Request} ICMP a disitintas universidades alrededor del mundo. La idea de enviar paquetes a universidades y no a otras organizaciones es que las universidades contestan este tipo de paquetes con más frecuencia.
-
-De esta forma, probamos comunicarnos con universidades que estuvieran geolocalizadas en distintos lugares del planeta, para luego poder analizar qué camino toma y con qué RTT cada paquete según su destino, 
-La universidades fueron las siguientes:
-
-Noruega: Oslo, www.uio.no
+Los objetivos del presente Trabajo Práctico son múltipes: por un lado, entender 
+los protocolos involucrados en cada comunicación o intercambio de datos entre un 
+usuario y un servidor, estando ambos conectados a Internet. Vimos en clase que 
+estos protocolos son tanto de nivel de capa de transporte (TCP, UDP) como de 
+aplicación (DNS, SMTP). Por otro lado, para afianzar nuestros conocimientos, 
+implementaremos una herramienta que cumpla la misma función que 
+\texttt{traceroute} por nuestra cuenta. La función de esta herramienta es 
+la de detectar, a partir del nombre de un dominio (host), cada uno de los 
+nodos intermedios por los que pasa el paquete antes de llegar a la dirección
+ IP correspondiente a dicho host. El objetivo de esto será el de analizar los
+ RTT a distintas universidades del mundo. 
 
 
-Kazakstan: www.enu.kz
+%----------------------------------------------------------------------
+% SECTION II: Caracterizando Rutas
+%----------------------------------------------------------------------
+\section{Caracterizando Rutas}
 
+  %----------------------------------------------------------------------
+  %  SUBSECTION III: Implementación de tool para hacer traceroute
+  %----------------------------------------------------------------------
+  \subsection{Implementación de tool para hacer traceroute}
+  Algo importante que nos facilitó el análisis fue la implementación de una función
+  DNSInverso, que para cada IP nos permitió reconocer el nombre de su máquina correspondiente,
+  para poder ir detectando para cada hop, en que localización del globo se encuentra dicha
+  máquina. 
 
-Varsovia: www.uw.edu.pl
+  %----------------------------------------------------------------------
+  %  SUBSECTION III: Adaptación de la tool
+  %----------------------------------------------------------------------
+  \subsection{Adaptación de la tool}
+  Aquí adaptamos la \emph{tool} del inciso anterior para que, una vez terminada 
+  la búsqueda, calcule el \emph{valor standard}  o \emph{valor Z del RTT} (ZRTT) 
+  de cada salto con respecto a la ruta global de la siguiente manera: si $RTT_i$ 
+  es el RTT medido para el salto $i$, se define $ ZRTT_i = \dfrac{RTT_i 
+  - \overline{RTT}}{SRTT} $ donde $\overline{RTT}$ y $SRTT$ son el promedio 
+  y el desvío estandard de los RTTs de la ruta respectivamente.  
 
+  Lo interesante de esta adaptación es que ...
 
-Tokyo: www.u-tokyo.ac.jp 
+%----------------------------------------------------------------------
+% SECTION III: Traceroute a universidades del mundo
+%----------------------------------------------------------------------
+\section{Experimentación: Traceroute a universidades del mundo}
+
+A partir de la herramienta \texttt{traceroute2} y tomando como IP origen la de la PC de uno de los integrantes del grupo,
+realizamos rastreos para distintas universidades alrededor del mundo. Cada una de estas universidades las identificamos
+a partir de su URL correspondiente. 
+En el proceso de la experimentación, introdujimos los datos obtenidos para cada universidad en un graficador, que 
+dada la lista de direcciones IP recorridas, las localiza geográficamente en un mapa del planeta Tierra, 
+y las une mediante una línea. 
+
+De esta forma, intentamos expresar de la forma más gráfica posible el camino a 
+escala global que debió efectuar cada paquete para llegar desde nuestra PC hasta algún servidor de dicha universidad, 
+ubicada a decenas de miles de kilómetros de nosotros. 
+
+El problema básico consistió en encontrar universidades para las cuáles los trayectos efectuados por los paquetes 
+tuvieran distintas características topológicas (por ejemplo que los paquetes atraviesen enlaces submarinos o que
+las universidades queden en distintos continentes), a fin 
+de poder realizar posteriormente un análisis más completo e interesante de los RTTs correspondientes a cada trayectoria.  
+
+Dos de los problemas con los que nos encontramos fueron:
+\begin{itemize}
+	\item encontramos muchas universidades, como por ejemplo la de Nairobi (www.uombi.ac.ke), 
+para las cuáles el camino graficado en el mapa terminaba en EEUU, en lugar de de en África, como esperábamos. Para estos
+casos, supusimos que el problema no era de un bug en nuestra implementación, sino en que dicha página web estaba hosteada
+en un servidor localizado en EEUU. Una posible razón por la cuál dicha universidad querría hacer esto podría ser, por 
+ejemplo, que el costo de hostear un servidor en Kenia es mayor que en EEUU.
+	\item en todos los casos analizados, hubieron muchos nodos intermedios que no contestaban nuestro \emph{ICMP Request}, con
+lo cuál habían muchos \emph{hops} que no éramos capaces de localizar en el mapa, lo cuál restaba precisión a nuestra 
+representación de la trayectoria de los paquetes.
+\end{itemize}
+
+La universidades que terminamos eligiendo fueron: en Noruega a <<www.uio.no>>, en Kazakstan a
+ <<www.enu.kz>>, en Varsovia a <<www.uw.edu.pl>> y en Tokyo a <<www.u-tokyo.ac.jp>>.
 
 \subsection{Gráficos y análisis}
 
-\section{ Contrastando con la realidad }
+%----------------------------------------------------------------------
+% SECTION IV: Contrastando con la realidad
+%----------------------------------------------------------------------
+\section{Contrastando con la realidad}
 A continuación simulamos una conexión mediante sucesivos \emph{pings} (\emph{EchoRequest} $+$ \emph{EchoReply}) con cada una de las universidades analizadas, y estimamos el \emph{RTT} en base a la siguiente ecuación: $ EstimatedRTT = \alpha * EstimatedRTT + (1 - \alpha) * SampleRTT $. 
 
 \end{document}
-
-
-
-
