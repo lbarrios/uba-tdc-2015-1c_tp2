@@ -80,18 +80,22 @@ nodos intermedios por los que pasa el paquete antes de llegar a la dirección
   %  SUBSECTION III: Implementación de tool para hacer traceroute
   %----------------------------------------------------------------------
   \subsection{Implementación de tool para hacer traceroute}
-  Algo importante que nos facilitó el análisis fue la implementación de una función
-  DNSInverso, que para cada IP nos permitió reconocer el nombre de su máquina correspondiente,
-  para poder ir detectando para cada hop, en que localización del globo se encuentra dicha
-  máquina. 
+  Una herramienta extra que implementamos, que nos facilitó la experimentación
+  fue la implementación de una función, que llamamos DNSInverso, que para cada 
+  IP nos permite reconocer, para cada router, su nombre.
+  De esta forma podemos detectar, para cada máquina de la que obtenemos respuesta,
+  a qué organización pertenece (si es que pertenece a alguna). Y, en particular,
+  si pertenece a la universidad a la que estamos haciendo el traceroute.
 
   %----------------------------------------------------------------------
   %  SUBSECTION III: Adaptación de la tool
   %----------------------------------------------------------------------
   \subsection{Adaptación de la tool}
-  Aquí adaptamos la \emph{tool} del inciso anterior para que, una vez terminada 
-  la búsqueda, calcule el \emph{valor standard}  o \emph{valor Z del RTT} (ZRTT) 
-  de cada salto con respecto a la ruta global de la siguiente manera: si $RTT_i$ 
+  Después de haber experimentado con la tool original, enviando paquetes
+  echo-request a varias universidades alrededor del mundo, 
+  adaptamos dicha \emph{tool} para que, una vez terminada 
+  la búsqueda, calcule el \emph{valor standard}  o \emph{valor Z (ZRTT) } 
+  en cada salto con respecto a la ruta global de la siguiente manera: si $RTT_i$ 
   es el RTT medido para el salto $i$, se define $ ZRTT_i = \dfrac{RTT_i 
   - \overline{RTT}}{SRTT} $ donde $\overline{RTT}$ y $SRTT$ son el promedio 
   y el desvío estandard de los RTTs de la ruta respectivamente.  
@@ -117,18 +121,34 @@ ubicada a decenas de miles de kilómetros de nosotros.
 El problema básico consistió en encontrar universidades para las cuáles los trayectos efectuados por los paquetes 
 tuvieran distintas características topológicas (por ejemplo que los paquetes atraviesen enlaces submarinos o que
 las universidades queden en distintos continentes), a fin 
-de poder realizar posteriormente un análisis más completo e interesante de los RTTs correspondientes a cada trayectoria.  
+de poder realizar posteriormente un análisis más completo e interesante de los RTTs 
+correspondientes a cada trayectoria.  
 
 Dos de los problemas con los que nos encontramos fueron:
 \begin{itemize}
 	\item encontramos muchas universidades, como por ejemplo la de Nairobi (www.uombi.ac.ke), 
-para las cuáles el camino graficado en el mapa terminaba en EEUU, en lugar de de en África, como esperábamos. Para estos
-casos, supusimos que el problema no era de un bug en nuestra implementación, sino en que dicha página web estaba hosteada
-en un servidor localizado en EEUU. Una posible razón por la cuál dicha universidad querría hacer esto podría ser, por 
-ejemplo, que el costo de hostear un servidor en Kenia es mayor que en EEUU.
-	\item en todos los casos analizados, hubieron muchos nodos intermedios que no contestaban nuestro \emph{ICMP Request}, con
-lo cuál habían muchos \emph{hops} que no éramos capaces de localizar en el mapa, lo cuál restaba precisión a nuestra 
-representación de la trayectoria de los paquetes.
+	para las cuáles el camino graficado en el mapa terminaba en EEUU, en lugar de de en África, 
+	como esperábamos. Para estos
+	casos, supusimos que el problema no era de un bug en nuestra implementación, sino en que
+	dicha página web estaba hosteada
+	en un servidor localizado en EEUU. Una posible razón por la cuál dicha universidad 
+	querría hacer esto podría ser, por 
+	ejemplo, que el costo de hostear un servidor en Kenia es mayor que en EEUU.
+	\item en todos los casos analizados, hubieron muchos nodos intermedios que no 
+	contestaban nuestro \emph{ICMP Request}, con
+	lo cuál habían muchos \emph{hops} que no éramos capaces de localizar en el mapa, 
+	lo cuál restaba precisión a nuestra 
+	representación de la trayectoria de los paquetes.
+	\item hubieron algunas universidades para las cuáles (por ejemplo, al enviar
+	40 paquetes a www.udsm.ac.tz) había un primer router localizado en dicha universidad  
+	nos contestaba, pero
+	después de obtener esta respuesta, dejábamos de obtener respuesta. De esta forma, no 
+	logramos obtener una respuesta de la IP destino. Creemos quue este 
+	último router que nos contestaba estaba actuando como firewall de la red interna
+	de dicha universidad.
+	\item tuvimos problemas con el envío de paquetes a través de conexión wi-fi. Es por 
+	esto que tuvimos que realizar todas las mediciones con una misma computadora, 
+	conectada a internet a través de una conexión cableada.
 \end{itemize}
 
 La universidades que terminamos eligiendo fueron: en Noruega a <<www.uio.no>>, en Kazakstan a
