@@ -16,6 +16,8 @@ DNS_RCODE_NAME_ERROR = 3L
 DNS_TYPE_A = 1
 DNS_TYPE_PTR = 12
 
+ID_GLOBAL = 1
+
 def is_valid_ipv4_address(address):
     """Devuelve True si la ip parámetro es válida"""
     import socket
@@ -115,7 +117,8 @@ def traceroute_sr1_to_ans_i(dst_ip,ttl_seq,timeout):
     import datetime
     r = {}
     #r['sr1'] = sr1(IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / TCP(flags=0x2), timeout=2, retry=0, verbose=VERBOSE)
-    packet = IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / ICMP(type="echo-request")
+    ID_GLOBAL += 1
+    packet = IP(dst=dst_ip, ttl=ttl_seq, id=ID_GLOBAL) / ICMP(type="echo-request")
     start = datetime.datetime.now()
     r['ans'],r['unans'] = sr(packet, timeout=0.5, retry=0, verbose=VERBOSE)
     end = datetime.datetime.now()
