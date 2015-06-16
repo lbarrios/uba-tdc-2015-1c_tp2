@@ -67,8 +67,8 @@ implementaremos una herramienta que cumpla la misma función que
 \texttt{traceroute} por nuestra cuenta. La función de esta herramienta es 
 la de detectar, a partir del nombre de un dominio (host), cada uno de los 
 nodos intermedios por los que pasa el paquete antes de llegar a la dirección
- IP correspondiente a dicho host. El objetivo de esto será el de analizar los
- RTT a distintas universidades del mundo. 
+IP correspondiente a dicho host. En este TP, analizaremos los
+RTT de paquetes enviados a distintas universidades del mundo. 
 
 
 %----------------------------------------------------------------------
@@ -80,10 +80,16 @@ nodos intermedios por los que pasa el paquete antes de llegar a la dirección
   %  SUBSECTION III: Implementación de tool para hacer traceroute
   %----------------------------------------------------------------------
   \subsection{Implementación de tool para hacer traceroute}
-  Una herramienta extra que implementamos, que nos facilitó la experimentación
-  fue la implementación de una función, que llamamos DNSInverso, que para cada 
-  IP nos permite reconocer, para cada router, su nombre.
-  De esta forma podemos detectar, para cada máquina de la que obtenemos respuesta,
+  Implementamos la herramienta \texttt{traceroute2} en python, usando la librería
+  \emph{scapy}. Para esto, armamos varios paquetes echo-request, inicianizándolos con un TTL
+  entre 1 y alguna cantidad de hops variable, que nos permita llegar al destino (en
+  general, 30 o 40 hops son más que suficientes). A cada paquete ICMP que es respondido,
+  le corresponderá un RTT diferente y, los paquetes que no son respondidos después de un tiempo
+  de timeout determinado, asumimos que fueron recibidos y no respondidos o que ser perdieron en la red,
+  marcando que el RTT y resto de la información correspondiente a dicho paquete con un $*"$. \\
+  Una herramienta extra que implementamos para facilitar la experimentación
+  fue una función que llamamos DNSInverso, que para cada router nos permite reconocer su nombre.
+  De esta forma podemos detectar, para cada máquina de la que obtenemos respuesta, en algún hop
   a qué organización pertenece (si es que pertenece a alguna). Y, en particular,
   si pertenece a la universidad a la que estamos haciendo el traceroute.
 
@@ -100,7 +106,10 @@ nodos intermedios por los que pasa el paquete antes de llegar a la dirección
   - \overline{RTT}}{SRTT} $ donde $\overline{RTT}$ y $SRTT$ son el promedio 
   y el desvío estandard de los RTTs de la ruta respectivamente.  
 
-  Lo interesante de esta adaptación es que ...
+  A partir de esta adaptación esperamos realizar gráficos de RTT = f(número de hop) que 
+  nos permita detectar aquellos hops que corresponden a enlaces submarinos. En particular,
+  si el hop $i$ tiene un $|ZRTT_i|$ mucho mayor que el resto, entonces asumiremos que
+  en el hop $i$ el paquete atraviesa un enlace submarino. 
 
 %----------------------------------------------------------------------
 % SECTION III: Traceroute a universidades del mundo
@@ -118,14 +127,17 @@ De esta forma, intentamos expresar de la forma más gráfica posible el camino a
 escala global que debió efectuar cada paquete para llegar desde nuestra PC hasta algún servidor de dicha universidad, 
 ubicada a decenas de miles de kilómetros de nosotros. 
 
-El problema básico consistió en encontrar universidades para las cuáles los trayectos efectuados por los paquetes 
+Uno de los problemas ocn que nos encontramos encontrar universidades para las cuáles los trayectos efectuados por los paquetes 
 tuvieran distintas características topológicas (por ejemplo que los paquetes atraviesen enlaces submarinos o que
 las universidades queden en distintos continentes), a fin 
-de poder realizar posteriormente un análisis más completo e interesante de los RTTs 
+de poder realizar posteriormente un análisis más completo e interesante de los RTTs y ZRTTs
 correspondientes a cada trayectoria.  
 
-Dos de los problemas con los que nos encontramos fueron:
+Dos de los problemas con los que nos encontramos durante la experimentación fueron:
 \begin{itemize}
+	\item tuvimos problemas con el envío de paquetes a través de conexión wi-fi. Es por 
+	esto que tuvimos que realizar todas las mediciones con una misma computadora, 
+	conectada a internet a través de una conexión cableada.
 	\item encontramos muchas universidades, como por ejemplo la de Nairobi (www.uombi.ac.ke), 
 	para las cuáles el camino graficado en el mapa terminaba en EEUU, en lugar de de en África, 
 	como esperábamos. Para estos
@@ -146,9 +158,6 @@ Dos de los problemas con los que nos encontramos fueron:
 	logramos obtener una respuesta de la IP destino. Creemos quue este 
 	último router que nos contestaba estaba actuando como firewall de la red interna
 	de dicha universidad.
-	\item tuvimos problemas con el envío de paquetes a través de conexión wi-fi. Es por 
-	esto que tuvimos que realizar todas las mediciones con una misma computadora, 
-	conectada a internet a través de una conexión cableada.
 \end{itemize}
 
 La universidades que terminamos eligiendo fueron: en Noruega a <<www.uio.no>>, en Kazakstan a
@@ -160,6 +169,13 @@ La universidades que terminamos eligiendo fueron: en Noruega a <<www.uio.no>>, e
 % SECTION IV: Contrastando con la realidad
 %----------------------------------------------------------------------
 \section{Contrastando con la realidad}
-A continuación simulamos una conexión mediante sucesivos \emph{pings} (\emph{EchoRequest} $+$ \emph{EchoReply}) con cada una de las universidades analizadas, y estimamos el \emph{RTT} en base a la siguiente ecuación: $ EstimatedRTT = \alpha * EstimatedRTT + (1 - \alpha) * SampleRTT $. 
+A continuación simulamos una conexión mediante sucesivos \emph{pings} (\emph{EchoRequest} $+$ \emph{EchoReply}) 
+con cada una de las universidades analizadas, y estimamos el \emph{RTT} en base a la siguiente ecuación: 
+$ EstimatedRTT = \alpha * EstimatedRTT + (1 - \alpha) * SampleRTT $. 
+También variaremos la cantidad de paquetes ($n$) y el $alpha$ para analizar los resultados y contrastarlos con
+los resultados obtenidos en la sección anterior. \\
+Por último, se nos pide que analizemos el eventual $throughput$ punta a punta que se deriva de la
+\emph{ecuación de Mathis} para enlaces con pérdida de paquetes estimando la pérdida de la siguiente manera:
+$EstimatedPacketLossProbability = \dfrac{\#Echo reply}{\#Echo request}$.
 
 \end{document}
