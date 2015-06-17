@@ -27,37 +27,11 @@ ax1.bar(ind, rtt_acumulado, width)
 ax1.set_xticks(ind + width / 2.0)
 ax1.set_xticklabels(hop_number)
 
-ax1.set_xlabel('Hop_number')
-ax1.set_ylabel('Round trip time(ms)')
+ax1.set_xlabel('Hop number')
+ax1.set_ylabel('Round trip time(ms)', color='b')
 
 ax2 = ax1.twinx()
-ax2.plot(ind, zrtt, 'r.')
+ax2.plot(ind, zrtt, 'rx', markersize=10, markeredgewidth=3)
+ax2.set_ylabel('zrtt', color='r')
 
 plt.savefig(output_file)
-raise Exception('final')
-
-
-
-plt.bar(ind, rtt_acumulado, width)
-plt.xticks(ind + width / 2.0, hop_number)
-plt.xlabel('Hop number')
-plt.ylabel('Round trip time(ms)')
-plt.savefig(output_file)
-
-fig, ax1 = plt.subplots()
-t = np.arange(0.01, 10.0, 0.01)  # hop_number
-s1 = np.exp(t)  # rtt_acumulado
-ax1.plot(t, s1, 'b-')
-ax1.set_xlabel('time (s)')
-# Make the y-axis label and tick labels match the line color.
-ax1.set_ylabel('exp', color='b')
-for tl in ax1.get_yticklabels():
-    tl.set_color('b')
-
-
-ax2 = ax1.twinx()
-s2 = np.sin(2*np.pi*t)
-ax2.plot(t, s2, 'r.')
-ax2.set_ylabel('sin', color='r')
-for tl in ax2.get_yticklabels():
-    tl.set_color('r')
