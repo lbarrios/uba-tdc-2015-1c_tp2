@@ -16,16 +16,12 @@ def calculate_zrtt(filename):
     # Calculo el rtt de cada hop haciendo el promedio entre todos los paquetes
     # enviados
     for hop in data:
-     #    avg = np.average([int(med["rtt"][:-3]) for med in hop if med["rtt"]!='*'])
-     #   if not np.isnan(avg): 
-     #       avg_rtt.append(avg)
-           # print avg
-    
-        mierda = [int(medicion['rtt'][:-3]) for medicion in hop if medicion['rtt'] != '*']
-        avg_rtt.append ( np.average( mierda ) if len(mierda) >0 else 0  )
+        rtts_hop = [int(medicion['rtt'][:-3]) for medicion in hop if medicion['rtt'] != '*']
+        avg_rtt.append ( np.average( rtts_hop ) if len(rtts_hop) >0 else 0  )
    
     #calculo de rtt haciendo la diferencia entre saltos
-    avg_rtt = [avg_rtt[i] - avg_rtt[i-1] for i in range(len(avg_rtt)) if i!=0]
+    avg_rtt = [avg_rtt[i] - avg_rtt[i-1] if i != 0 else avg_rtt[i]
+               for i in range(len(avg_rtt))]
    
    #calculo el rtt promedio total y el desvio estandar 
     avg_rtt_total = np.average(avg_rtt)
