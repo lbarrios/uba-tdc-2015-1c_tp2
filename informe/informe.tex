@@ -11,6 +11,7 @@
 \usepackage{amsmath}
 % dont use geometry package
 %\usepackage{geometry}
+
 \usepackage{header}
 
 \begin{document}
@@ -113,16 +114,17 @@ enviados a distintas universidades del mundo.
   lista que contiene las diferencias de RTT entre cada hop y el hop que lo
   antecede en la ruta que realiza el paquete.
 
-  Luego, para cada hop $i$ tendremos un valor $|ZRTT_i|$. Por cómo definimos a $ZRTT_i$,
-  se observa que a mayor $valor Z$ para un hop, mayor será la variación del tiempo que se
-  tarda en atravesar dicho hop en comparación con el promedio del tiempo que se tarda
-  en atravesar cada hop de la ruta.
+  Luego, para cada hop $i$ tendremos un valor $|ZRTT_i|$. Por cómo definimos a
+  $ZRTT_i$, se observa que a mayor $valor Z$ para un hop, mayor será la
+  variación del tiempo que se tarda en atravesar dicho hop en comparación con el
+  promedio del tiempo que se tarda en atravesar cada hop de la ruta.
 
-  A partir de esta adaptación esperamos introducir en los gráficos de RTT = f(número de hop)
-  que habíamos hecho con la $tool$ original la nueva información obtenida sobre cada hop.
-  Esperamos que esto nos permita detectar aquellos hops que corresponden a enlaces submarinos.
-  En particular, si el hop $i$ tiene un $|ZRTT_i|$ mucho mayor que el resto, sería un indicator
-  de que en el hop $i$ el paquete atraviesa un enlace submarino.
+  A partir de esta adaptación esperamos introducir en los gráficos de RTT =
+  f(número de hop) que habíamos hecho con la $tool$ original la nueva
+  información obtenida sobre cada hop. Esperamos que esto nos permita detectar
+  aquellos hops que corresponden a enlaces submarinos. En particular, si el hop
+  $i$ tiene un $|ZRTT_i|$ mucho mayor que el resto, sería un indicator de que en
+  el hop $i$ el paquete atraviesa un enlace submarino.
 
 %----------------------------------------------------------------------
 % SECTION III: Traceroute a universidades del mundo
@@ -154,14 +156,15 @@ submarinos o que las universidades queden en distintos continentes), a fin de
 poder realizar posteriormente un análisis más completo e interesante de los RTTs
 y ZRTTs correspondientes a cada trayectoria.
 
-Dos de los problemas con los que nos encontramos durante la experimentación fueron:
+Dos de los problemas con los que nos encontramos durante la experimentación
+fueron:
 \begin{itemize}
 
-  \item tuvimos problemas con el envío de paquetes a través de conexión wi-fi.
+  \item Tuvimos problemas con el envío de paquetes a través de conexión wi-fi.
   Es por esto que tuvimos que realizar todas las mediciones con una misma
   computadora, conectada a internet a través de una conexión cableada.
 
-  \item encontramos muchas universidades, como por ejemplo la de Nairobi
+  \item Encontramos muchas universidades, como por ejemplo la de Nairobi
   (www.uombi.ac.ke), para las cuáles el camino graficado en el mapa terminaba en
   EEUU, en lugar de de en África, como esperábamos. Para estos casos, supusimos
   que el problema no era de un bug en nuestra implementación, sino en que dicha
@@ -169,34 +172,36 @@ Dos de los problemas con los que nos encontramos durante la experimentación fue
   razón por la cuál dicha universidad querría hacer esto podría ser, por
   ejemplo, que el costo de hostear un servidor en Kenia es mayor que en EEUU.
 
-  \item en todos los casos analizados, hubieron muchos nodos intermedios que no
+  \item En todos los casos analizados, hubieron muchos nodos intermedios que no
   contestaban nuestro \emph{ICMP Request}, con lo cuál habían muchos \emph{hops}
   que no éramos capaces de localizar en el mapa, lo cuál restaba precisión a
   nuestra representación de la trayectoria de los paquetes.
 
-  \item hubieron algunas universidades para las cuáles (por ejemplo, al enviar
+  \item Hubieron algunas universidades para las cuáles (por ejemplo, al enviar
   40 paquetes a www.udsm.ac.tz) había un primer router localizado en dicha
   universidad nos contestaba, pero después de obtener esta respuesta, dejábamos
   de obtener respuesta. De esta forma, no logramos obtener una respuesta de la
   IP destino. Creemos quue este último router que nos contestaba estaba actuando
   como firewall de la red interna de dicha universidad.
-  \end{itemize}
+
+\end{itemize}
 
 \subsection{Gráficos y análisis}
 
 \subsubsection{Universidad de Auckland}
+
 \begin{figure}[ht]\begin{center}
    \includegraphics[width=0.5\textwidth]{%
     imagenes/auckland.png}
     \caption{Auckland}
-    \label{Auckland}
+    \label{auckland-rtt-zrtt}
 \end{center}\end{figure}
 
 \begin{figure}[ht]\begin{center}
    \includegraphics[width=0.5\textwidth]{%
     imagenes/auckland-mapa.png}
     \caption{Auckland - mapa}
-    \label{Auckland}
+    \label{auckland-mapa}
 \end{center}\end{figure}
 
 \subsubsection{Universidad de Tanzania}
@@ -204,14 +209,14 @@ Dos de los problemas con los que nos encontramos durante la experimentación fue
    \includegraphics[width=0.5\textwidth]{%
     imagenes/tanzania.png}
     \caption{Tanzania}
-    \label{Tanzania}
+    \label{tanzania-rtt-zrtt}
 \end{center}\end{figure}
 
 \begin{figure}[ht]\begin{center}
    \includegraphics[width=0.5\textwidth]{%
     imagenes/tanzania-mapa.png}
     \caption{Tanzania - mapa}
-    \label{Tanzania}
+    \label{tanzania-mapa}
 \end{center}\end{figure}
 
 \subsubsection{Universidad de Tokyo}
@@ -219,14 +224,14 @@ Dos de los problemas con los que nos encontramos durante la experimentación fue
    \includegraphics[width=0.5\textwidth]{%
     imagenes/japon.png}
     \caption{Tokyo}
-    \label{Tokyo}
+    \label{tokyo-rtt-zrtt}
 \end{center}\end{figure}
 
 \begin{figure}[ht]\begin{center}
    \includegraphics[width=0.5\textwidth]{%
     imagenes/japon-mapa.png}
     \caption{Tokyo - mapa}
-    \label{Tokyo}
+    \label{tokyo-mapa}
 \end{center}\end{figure}
 
 \subsubsection{Universidad de Oslo}
@@ -234,14 +239,14 @@ Dos de los problemas con los que nos encontramos durante la experimentación fue
    \includegraphics[width=0.5\textwidth]{%
     imagenes/noruega-oslo.png}
     \caption{Noruega}
-    \label{Noruega}
+    \label{noruega-rtt-zrtt}
 \end{center}\end{figure}
 
 \begin{figure}[ht]\begin{center}
    \includegraphics[width=0.5\textwidth]{%
     imagenes/noruega-oslo-mapa.png}
     \caption{Noruega (Oslo) - mapa}
-    \label{Noruega}
+    \label{noruega-mapa}
 \end{center}\end{figure}
 
 \subsubsection{Análisis general}
@@ -258,6 +263,7 @@ estamos enviando) tengan una prioridad baja.
 % SECTION IV: Contrastando con la realidad
 %----------------------------------------------------------------------
 \section{Contrastando con la realidad}
+
 A continuación simulamos una conexión mediante sucesivos \emph{pings}
 (\emph{EchoRequest} $+$ \emph{EchoReply}) a cada una de las universidades
 analizadas, y estimamos el \emph{RTT} a dicho destino en base a la siguiente
@@ -270,24 +276,23 @@ el $EstimatedRTT$ en cada hop del recorrido del paquete en función del RTT que
 hubo en el hop anterior y en el actual, dándoles un peso (importancia) a cada
 uno.
 
-Variamos la cantidad de paquetes enviados ($n$) y $alpha$ para obtener los parámetros más
-adecuados para analizar los resultados y contrastarlos con los resultados obtenidos en la sección anterior.
-Esta elección previa de parámetros se realizó designando como host a la Universidad de Auckland.
+Variamos la cantidad de paquetes enviados ($n$) y $alpha$ para obtener los
+parámetros más adecuados para analizar los resultados y contrastarlos con los
+resultados obtenidos en la sección anterior. Esta elección previa de parámetros
+se realizó designando como host a la Universidad de Auckland.
 
 \begin{figure}[ht]\begin{center}
-   \includegraphics[width=0.5\textwidth]{%
-    imagenes/auckland-estimate-alpha-08.png}
-    \caption{RTT estimado para distintos valores de $n$, con $alpha$=0.8}
-    \label{fig:auckland-estimate-alpha-08}
+   \includegraphics[width=0.5\textwidth]{imagenes/auckland-estimate-alpha-08.png}
+    \caption{RTT estimado para distintos \texttt{n}, con \texttt{alpha}=0.8}
+    \label{auckland-estimate-alpha-08}
 \end{center}\end{figure}
 
 Es interesante el valor estimado del RTT usando distintos valores de $n$. Dada la fórmula de estimación, el tener más mediciones debería moderar el efecto de outliers, resultando en una estimación más uniforme.
 En efecto, en \fig{auckland-estimate-alpha-08} se puede observar una variabilidad grande entre haber medido 10, 50 y 100 paquetes, pero un resultado mucho más estable tras haber medido 500 y 1000 paquetes.
 
 \begin{figure}[ht]\begin{center}
-   \includegraphics[width=0.5\textwidth]{%
-    imagenes/auckland-estimate-n-1000.png}
-    \caption{RTT estimado para distintos valores de $alpha$, con $n$=1000}
+   \includegraphics[width=0.5\textwidth]{imagenes/auckland-estimate-n-1000.png}
+    \caption{RTT estimado para distintos \texttt{alpha}, con \texttt{n}=1000}
     \label{fig:auckland-estimate-n-1000}
 \end{center}\end{figure}
 
