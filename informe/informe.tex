@@ -271,6 +271,20 @@ $EstimatedPacketLossProbability = \dfrac{\#Echo reply}{\#Echo request}$. Aquí h
 que en la ecuación de Mathis asumimos que si $p$ es la probabilidad de pérdida de un paquete,
 entonces la cantidad estimada de paquetes enviados exitosamente es $1/p$.
 
+\begin{figure}[ht]\begin{center}
+   \includegraphics[width=0.5\textwidth]{%
+    imagenes/auckland-estimate-alpha-08.png}
+    \caption{RTT estimado para distintos valores de $n$, con $alpha$=0.8}
+    \label{auckland-estimate-alpha-08}
+\end{center}\end{figure}
+
+\begin{figure}[ht]\begin{center}
+   \includegraphics[width=0.5\textwidth]{%
+    imagenes/auckland-estimate-n-1000.png}
+    \caption{RTT estimado para distintos valores de $alpha$, con $n$=1000}
+    \label{auckland-estimate-n-1000}
+\end{center}\end{figure}
+
 \begin{tabular}{| p{1.6cm} | p{1.2cm} | p{1.4cm} | p{1.2cm} | p{1.7cm} |}
   \hline
   Universidad & RTT inicial & Estimated RTT & $p$ & Throughput de Mathis \\
