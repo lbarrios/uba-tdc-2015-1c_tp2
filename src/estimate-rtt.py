@@ -1,37 +1,35 @@
-import csv, math, subprocess, sys
+import csv, datetime, math, subprocess, sys
+from scapy.all import sr, sr1, ICMP, TCP, IP, RandShort
 
 host = sys.argv[1]  # host al que hace el ping
 n = int(sys.argv[2])  # cantidad de pings
 alpha = float(sys.argv[3])  # parametro de resistencia a outliers
 
-cmd = 'ping -c %d %s' % (n, host)
-output = subprocess.check_output(cmd, shell=True, executable="/bin/bash",
-                                 stderr=subprocess.STDOUT)
-
-csvreader = csv.reader(output.splitlines(), delimiter=' ')
-i = -1
-
 sample_rtts = []
-for row in csvreader:
-    i += 1
-    if i == 0:
-        continue
-    if i > n:
-        break
-    try:
-        sample_rtt = float(row[-2][5:])
+
+for i in range(n):
+    packet = IP(dst=host) / ICMP(type="echo-request")
+    start = datetime.datetime.now()
+    ans, unans = sr(packet, timeout=0.5, retry=0, verbose=False)
+    end = datetime.datetime.now()
+    sample_rtt = (end - start).microseconds / 1000
+    if len(ans) == 1 and len(unans) == 0:
         sample_rtts.append(sample_rtt)
-    except:
-        pass
+
+p = 1.0 - (float(len(sample_rtts)) / float(n))
+print p
+if p == 0.0:
+    raise Exception('mathis undefinido pues p == 0. pruebe un n mas grande')
+
+if len(sample_rtts) == 0:
+    raise Exception('no answered packets')
 
 estimated_rtt = sample_rtts[0]
 for i in range(1, len(sample_rtts)):
     estimated_rtt = alpha * estimated_rtt + (1 - alpha) * sample_rtts[i]
 
+MSS = 1460
+mathis_throughput = MSS / (estimated_rtt * math.sqrt(p))
 
 print 'estimated rtt: ', estimated_rtt  # una estimacion mejor que el promedio, ya que tiene en cuenta los outliers
-MSS = 1460  # chequear
-# OBS: p esta mal definido en el enunciado, creo yo
-p = 0.0001  # FIXME: calcularlo de alguna forma
-mathis_throughput = MSS / (estimated_rtt * math.sqrt(p))
 print 'mathis throughput: ', mathis_throughput
