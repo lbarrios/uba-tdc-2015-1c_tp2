@@ -1,12 +1,12 @@
 import json, os, sys
 import functions
 
-url = sys.argv[1]
+input_file = sys.argv[1]
+output_file = sys.argv[2]
 
-os.system('python traceroute.py ' + url)
-functions.plot_routes(url + '.json', url + '.html')
+functions.plot_routes(input_file, output_file)
 
-cmd = 'xdg-open %s.html' % url
+cmd = 'xdg-open %s' % output_file
 if sys.platform == 'darwin':
-    cmd = 'open %s.html' % url
+    cmd = 'open %s' % output_file
 os.system(cmd)

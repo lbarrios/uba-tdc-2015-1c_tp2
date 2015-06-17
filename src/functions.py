@@ -1,4 +1,4 @@
-import json, os, pygmaps
+import json, os, pygmaps, random
 
 from collections import defaultdict
 from geoip import geolite2
@@ -38,6 +38,7 @@ def plot_routes(input_file, output_file):
     route_map.addpoint(previous_node[0], previous_node[1], title=str(hopn))
                 
     for hop in data:
+        hopn += 1
         n = len(hop)
         freqs = defaultdict(int)
         for med in hop:
@@ -51,9 +52,8 @@ def plot_routes(input_file, output_file):
             path = [previous_node, coords]
             weight = BASE_WEIGHT * float(freq) / n
             route_map.addpath(path, "#FF0000", weight)
-            route_map.addpoint(coords[0], coords[1], title=str(hopn))
+            route_map.addpoint(coords[0] + random.random(), coords[1] + random.random(), title=str(hopn))
 
-        hopn += 1
         sorted_freqs = freqs.items()
         sorted_freqs.sort(key=lambda x: x[1], reverse=True)
         most_frequent_ip = sorted_freqs[0][0]
