@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from memoized import memoized
+
 # Global parameters, is this ok?
 DEBUG = False
 #DEBUG = True
@@ -8,16 +10,17 @@ VERBOSE = False
 hops_max = 40
 dns_server = "8.8.8.8"
 dns_recursive = True
-packets_per_hop = 20
+packets_per_hop = 50
 
 # Constants, is this ok?
-DNS_RCODE_OK = 0L
-DNS_RCODE_NAME_ERROR = 3L
+DNS_RCODE_OK = 0
+DNS_RCODE_NAME_ERROR = 3
 DNS_TYPE_A = 1
 DNS_TYPE_PTR = 12
 
 ID_GLOBAL = 1
 
+@memoized
 def is_valid_ipv4_address(address):
     """Devuelve True si la ip parámetro es válida"""
     import socket
@@ -46,11 +49,12 @@ def traceroute(host):
         packet = IP(dst=url, ttl=ttl) / ICMP()
         ans = sr1(packet, verbose=0)
         host = ans[ICMP].underlayer.src
-        print host
+        print(host)
         hosts.append(host)
         if ans.type == 3:
             return hosts
 
+@memoized
 def dns_resolve(host):
     """
     Esta función recibe un hostname
@@ -73,9 +77,10 @@ def dns_resolve(host):
             return answers[count].rdata
     raise Exception('\n\nLa query DNS para el host "%s" no devolvió ningún registro de clase A.\nNo es posible continuar.'%host)
 
+@memoized
 def reverse_dns_resolve(ip):
     from scapy.all import sr1, IP, UDP, DNS, DNSQR
-    if DEBUG: print "Resolviendo el DNS inverso de %s"%ip
+    if DEBUG: print("Resolviendo el DNS inverso de %s"%ip)
     reversed_ip = ".".join([o for o in reversed(ip.split("."))])
     res = sr1(IP(dst=dns_server)/UDP()/DNS(rd=1,qd=DNSQR(qname='%s.in-addr.arpa'%reversed_ip, qtype='PTR')), timeout=.5, verbose=VERBOSE)
     if(res == None):
@@ -91,6 +96,7 @@ def reverse_dns_resolve(ip):
     #raise Exception('\n\nLa query reverse-DNS para la IP "%s" no devolvió ningún registro de clase PTR.\n'%host)
     return "???"
 
+@memoized
 def get_ip_from_parameter(host):
     """
     Esta función recibe un parámetro,
@@ -117,6 +123,7 @@ def traceroute_sr1_to_ans_i(dst_ip,ttl_seq,timeout):
     import datetime
     r = {}
     #r['sr1'] = sr1(IP(dst=dst_ip, ttl=ttl_seq, id=RandShort()) / TCP(flags=0x2), timeout=2, retry=0, verbose=VERBOSE)
+    global ID_GLOBAL
     ID_GLOBAL += 1
     packet = IP(dst=dst_ip, ttl=ttl_seq, id=ID_GLOBAL) / ICMP(type="echo-request")
     start = datetime.datetime.now()
@@ -151,18 +158,18 @@ def traceroute2(parameter):
     """
     dst_ip = get_ip_from_parameter(parameter)
     rcv,snd,ttl_seq = None,None,1
-    print "traceroute to %s (%s), hops max %s"%(url,dst_ip,hops_max)
+    print("traceroute to %s (%s), hops max %s"%(url,dst_ip,hops_max))
     hops_list = []
     while (not rcv or host!=dst_ip) and ttl_seq<=hops_max:
-        print "Hop #%s"%ttl_seq
+        print("Hop #%s"%ttl_seq)
         ans = {}
         host = "?"
         hop_list = list()
         for i in range(0,packets_per_hop):
             ans[i] = rcv = traceroute_sr1_to_ans_i(dst_ip, ttl_seq, 2)
             host = ans[i]['host']
-            print "\t{:>15s} {:40s}".format(ans[i]['host'],'(%s)'%ans[i]['hostname']),
-            print "\t{:6s}".format(ans[i]['time'])
+            print("\t{:>15s} {:40s}".format(ans[i]['host'],'(%s)'%ans[i]['hostname'])),
+            print("\t{:6s}".format(ans[i]['time']))
             res = {}
             res['ip'] = ans[i]["host"]
             res['hostname'] = ans[i]["hostname"]
