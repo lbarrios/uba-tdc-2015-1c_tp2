@@ -281,7 +281,8 @@ Esta elección previa de parámetros se realizó designando como host a la Unive
     \label{fig:auckland-estimate-alpha-08}
 \end{center}\end{figure}
 
-Es evidente
+Es interesante el valor estimado del RTT usando distintos valores de $n$. Dada la fórmula de estimación, el tener más mediciones debería moderar el efecto de outliers, resultando en una estimación más uniforme.
+En efecto, en \fig{auckland-estimate-alpha-08} se puede observar una variabilidad grande entre haber medido 10, 50 y 100 paquetes, pero un resultado mucho más estable tras haber medido 500 y 1000 paquetes.
 
 \begin{figure}[ht]\begin{center}
    \includegraphics[width=0.5\textwidth]{%
@@ -292,7 +293,7 @@ Es evidente
 
 Cuando $alpha$ está cercano a 0, estamos estimando el RTT hasta el host solo en función de la última medición. A medida que $alpha$ se acerque a 1, le estamos dando más importancia a nuestro conocimiento previo sobre la congestión en la red y el valor del RTT. Parece sensato elegir un $alpha$ bastante grande para aprovechar la información previa y hacer una estimación estadística. Un $alpha$ chico resultaría en una estimación del RTT muy volátil, afectada por la presencia de $outliers$.
 De hecho, el estandar TCP define $alpha=0.875$\footnote{http://tools.ietf.org/html/rfc6298}.
-Nuestros resultados, expuestos en la figura, muestran un RTT estimado más bajo para los valores de $alpha$ más altos. Sin embargo, la diferencia no parece demasiado grande en relación al RTT. Se estima que las diferencias se apreciarían más en redes muy congestionadas.
+Nuestros resultados, expuestos en \fig{auckland-estimate-n-1000}, muestran un RTT estimado más bajo para los valores de $alpha$ más altos. Sin embargo, la diferencia no parece demasiado grande en relación al RTT. Se estima que las diferencias se apreciarían más en redes muy congestionadas.
 
 Por último, se nos pide que analizemos el eventual $throughput$ punta a punta
 que se deriva de la \emph{ecuación de Mathis} para enlaces con pérdida de
