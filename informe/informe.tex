@@ -85,16 +85,16 @@ RTT de paquetes enviados a distintas universidades del mundo.
   entre 1 y alguna cantidad de hops variable, que nos permita llegar al destino (en
   general, 30 o 40 hops son más que suficientes). A cada paquete ICMP que es respondido,
   le corresponderá un RTT diferente y, los paquetes que no son respondidos después de un tiempo
-  de timeout determinado, asumimos que fueron recibidos y no respondidos o que ser perdieron en la red,
+  de timeout determinado, asumimos que fueron recibidos y no respondidos o que se perdieron en la red,
   marcando que el RTT y resto de la información correspondiente a dicho paquete con un $*$. \\
   Una herramienta extra que implementamos para facilitar la experimentación
   fue una función que llamamos DNSInverso, que para cada router nos permite reconocer su nombre.
-  De esta forma podemos detectar, para cada máquina de la que obtenemos respuesta, en algún hop
+  De esta forma podemos detectar, para cada máquina de la que obtenemos respuesta en algún hop,
   a qué organización pertenece (si es que pertenece a alguna). Y, en particular,
   si pertenece a la universidad a la que estamos haciendo el traceroute.
   
   A partir de los valores de RTT obtenidos para cada nodo intermedio de la ruta rastreada por
-  \texttt{traceroute2}, graficamos el RTT obsevado entre dicho nodo y el nodo origen.
+  \texttt{traceroute2}, graficamos el RTT observado entre dicho nodo y el nodo origen.
 
   %----------------------------------------------------------------------
   %  SUBSECTION III: Adaptación de la tool
@@ -104,7 +104,8 @@ RTT de paquetes enviados a distintas universidades del mundo.
   echo-request a varias universidades alrededor del mundo, 
   adaptamos dicha \emph{tool} para que, una vez terminada 
   la búsqueda, calcule el \emph{valor standard}  o \emph{valor Z (ZRTT) } 
-  en cada salto con respecto a la ruta global de la siguiente manera: si $RTT_i$ 
+  en cada salto con respecto a los saltos realizados en la ruta global de la 
+  siguiente manera: si $RTT_i$ 
   es el RTT medido para el salto $i$, se define $ ZRTT_i = \dfrac{RTT_i 
   - \overline{RTT}}{SRTT} $ donde $\overline{RTT}$ y $SRTT$ son el promedio 
   y el desvío estandard de una lista que contiene las diferencias de RTT entre
@@ -118,8 +119,8 @@ RTT de paquetes enviados a distintas universidades del mundo.
   A partir de esta adaptación esperamos introducir en los gráficos de RTT = f(número de hop) 
   que habíamos hecho con la $tool$ original la nueva información obtenida sobre cada hop.
   Esperamos que esto nos permita detectar aquellos hops que corresponden a enlaces submarinos. 
-  En particular, si el hop $i$ tiene un $|ZRTT_i|$ mucho mayor que el resto, sería un signo
-  indicativo de que en el hop $i$ el paquete atraviesa un enlace submarino. 
+  En particular, si el hop $i$ tiene un $|ZRTT_i|$ mucho mayor que el resto, sería un indicator
+  de que en el hop $i$ el paquete atraviesa un enlace submarino. 
 
 %----------------------------------------------------------------------
 % SECTION III: Traceroute a universidades del mundo
@@ -133,7 +134,7 @@ En el proceso de la experimentación, introdujimos los datos obtenidos para cada
 dada la lista de direcciones IP recorridas, las localiza geográficamente en un mapa del planeta Tierra, 
 y las une mediante una línea.
 
-Las universidades que terminamos eligiendo, que fueron: en Noruega (Oslo) a <<www.uio.no>>, en 
+Las universidades que terminamos eligiendo fueron: en Noruega (Oslo) a <<www.uio.no>>, en 
 Japón (Tokyo) a <<www.u-tokyo.ac.jp>>, en Tanzania (Dar es Salaam) a <<www.udsm.ac.tz>> y 
 en Nueva Zelanda (Auckland) a <<www.auckland.ac.nz>>. 
 
@@ -184,7 +185,6 @@ Dos de los problemas con los que nos encontramos durante la experimentación fue
     \label{Auckland}
 \end{center}\end{figure}
 
-\subsubsection{Universidad de Auckland}
 \begin{figure}[ht]\begin{center}
    \includegraphics[width=0.5\textwidth]{%
     imagenes/auckland-mapa.png}
@@ -200,7 +200,6 @@ Dos de los problemas con los que nos encontramos durante la experimentación fue
     \label{Tanzania}
 \end{center}\end{figure}
 
-\subsubsection{Universidad de Tanzania}
 \begin{figure}[ht]\begin{center}
    \includegraphics[width=0.5\textwidth]{%
     imagenes/tanzania-mapa.png}
@@ -216,7 +215,6 @@ Dos de los problemas con los que nos encontramos durante la experimentación fue
     \label{Tokyo}
 \end{center}\end{figure}
 
-\subsubsection{Universidad de Tokyo}
 \begin{figure}[ht]\begin{center}
    \includegraphics[width=0.5\textwidth]{%
     imagenes/japon-mapa.png}
@@ -232,7 +230,6 @@ Dos de los problemas con los que nos encontramos durante la experimentación fue
     \label{Noruega}
 \end{center}\end{figure}
 
-\subsubsection{Universidad de Oslo}
 \begin{figure}[ht]\begin{center}
    \includegraphics[width=0.5\textwidth]{%
     imagenes/noruega-oslo-mapa.png}
@@ -241,7 +238,7 @@ Dos de los problemas con los que nos encontramos durante la experimentación fue
 \end{center}\end{figure}
 
 \subsubsection{Análisis general}
-Lo primero que nos llamó la atención de estos histogramas es que los RTTs observados entre dos
+Lo primero que nos llamó la atención de estos histogramas fue que los RTTs observados entre dos
 hops consecutivos no siempre son crecientes. Esto en principio no tiene sentido, pues cualquier 
 paquete, para llegar al hop $i$, necesariamente debe pasar antes por el hop $i-1$. Luego, 
 una posible explicación para esto es que alguno/s router/s de la ruta estén utilizando colas
