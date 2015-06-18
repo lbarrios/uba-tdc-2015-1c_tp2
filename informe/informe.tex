@@ -301,14 +301,16 @@ De hecho, el estandar TCP define $alpha=0.875$\footnote{http://tools.ietf.org/ht
 Nuestros resultados, expuestos en \fig{auckland-estimate-n-1000}, muestran un RTT estimado más bajo para los valores de $alpha$ más altos. Sin embargo, la diferencia no parece demasiado grande en relación al RTT. Se estima que las diferencias se apreciarían más en redes muy congestionadas.
 
 Por último, se nos pide que analizemos el eventual $throughput$ punta a punta
-que se deriva de la \emph{ecuación de Mathis} para enlaces con pérdida de
-paquetes estimando la pérdida de la siguiente manera:
+que se deriva de la \emph{ecuación de Mathis}:
 \[
-EstimatedPacketLossProbability = \dfrac{\#Echo reply}{\#Echo request}
+Throughput \leq \frac{MSS}{RTT*\sqrt{p}}
 \]
-Aquí hay que aclarar, que en la ecuación de Mathis asumimos que si $p$ es la
-probabilidad de pérdida de un paquete, entonces la cantidad estimada de paquetes
-enviados exitosamente es $1/p$.
+
+donde $p$ es la probabilidad estimada de pérdida de paquetes, definida de la siguiente manera:
+\[
+p = 1 - \dfrac{\#Echo reply}{\#Echo request}
+\]
+$MSS$ es el $Maximum Window Size$,
 
 \begin{tabular}{| p{1.6cm} | p{1.2cm} | p{1.4cm} | p{1.2cm} | p{1.7cm} |}
   \hline
@@ -319,6 +321,7 @@ enviados exitosamente es $1/p$.
   Tanzania & 468.56 & 495.57 & 0.004 & 46.58 \\
   Tokyo & 372.04 & 394.87 & 0.006 & 47.73 \\
   \hline
+  \label{fig:mathis}
 \end{tabular}
 
 \end{document}
